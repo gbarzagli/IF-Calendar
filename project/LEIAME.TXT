@@ -1,0 +1,10 @@
+Comando para rodar o projeto:
+
+	No Linux:
+		./gradlew clean tomcatRun
+	
+	No Windows:
+		gradlew clean tomcatRun
+
+Abrir o seguinte endereco:
+    http://localhost:8080/if-calendar/
