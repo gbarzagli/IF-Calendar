@@ -3,6 +3,7 @@ package model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 /**
  * EntityObject
@@ -10,6 +11,7 @@ import javax.persistence.Id;
  * 
  * @author Gabriel Barzagli
  */
+@MappedSuperclass
 public abstract class EntityObject {
 
     @Id

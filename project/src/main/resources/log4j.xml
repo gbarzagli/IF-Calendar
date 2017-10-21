@@ -10,5 +10,16 @@
         <priority value="DEBUG" />
         <appender-ref ref="stdout" />
     </category>
-    <!-- incluir outras definições aqui -->
+    <category name="org.jboss.logging">
+        <priority value="INFO" />
+        <appender-ref ref="stdout" />
+    </category>
+    <category name="org.jboss.weld">
+        <priority value="INFO" />
+        <appender-ref ref="stdout" />
+    </category>
+    <category name="org.hibernate.validator">
+        <priority value="INFO" />
+        <appender-ref ref="stdout" />
+    </category>
 </log4j:configuration>
