@@ -2,11 +2,13 @@ package model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Teste
  */
 @Entity
+@Table(name="teste")
 public class Teste extends EntityObject {
 
     public static final String CLASS_NAME = "Teste";
