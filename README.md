@@ -21,6 +21,7 @@ Finally, open the following link:
 http://localhost:8080/if-calendar/
 
 ### HOW TO PUSH A CHANGE
-1. Create your own branch to commit your changes.
-2. Push the branch to github.
-3. Create a pull request and add Gabriel as reviewer.
+1. Run gradlew clean before your commit.
+2. Create your own branch to commit your changes.
+3. Push the branch to github.
+4. Create a pull request and add Gabriel as reviewer.
