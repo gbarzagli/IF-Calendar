@@ -14,7 +14,7 @@ public class HomeController {
     @Inject
     private Result result;
     
-    @Path("/home/logIn")
+    @Path("/login")
     @Post
     public void logIn(User user) {
     	result.include("login", user.getLogin());
