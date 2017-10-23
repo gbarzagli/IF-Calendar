@@ -1,9 +1,8 @@
 package factory;
 
 import dao.GenericDAO;
-import dao.HibernateTesteDAO;
+import dao.TesteDAO;
 import factory.constants.DAOConstants;
-import model.Teste;
 
 /**
  * DAOFactory
@@ -19,7 +18,7 @@ public class DAOFactory {
     public static GenericDAO getDAO(String type) {
         switch (type) {
             case DAOConstants.TESTE_CLASS:
-                return HibernateTesteDAO.getInstance();
+                return new TesteDAO();
         }
         return null;
     }

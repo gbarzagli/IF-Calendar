@@ -8,5 +8,5 @@ import model.Teste;
  * 
  * @author Gabriel Barzagli
  */
-public interface TesteDAO extends GenericDAO<Teste> {
+public class TesteDAO extends HibernateGenericDAO<Teste> {
 }
