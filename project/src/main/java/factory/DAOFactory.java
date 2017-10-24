@@ -2,6 +2,7 @@ package factory;
 
 import dao.GenericDAO;
 import dao.TesteDAO;
+import dao.UserDAO;
 import factory.constants.DAOConstants;
 
 /**
@@ -19,6 +20,8 @@ public class DAOFactory {
         switch (type) {
             case DAOConstants.TESTE_CLASS:
                 return new TesteDAO();
+            case DAOConstants.USER_CLASS:
+            	return new UserDAO();
             default:
                 return null;
         }

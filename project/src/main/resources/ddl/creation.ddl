@@ -1,0 +1,12 @@
+DROP DATABASE calendar;
+CREATE DATABASE calendar;
+USE calendar;
+CREATE TABLE teste (
+    id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    value INT
+);
+CREATE TABLE user (
+    id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    login VARCHAR(255),
+    password VARCHAR(255)
+);

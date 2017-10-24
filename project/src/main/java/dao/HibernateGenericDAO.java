@@ -19,7 +19,7 @@ public abstract class HibernateGenericDAO<T> implements GenericDAO<T> {
     private Class<T> classObject;
 
     protected HibernateGenericDAO() {
-        factory = Persistence.createEntityManagerFactory("manager");
+        factory = Persistence.createEntityManagerFactory("calendar");
     }
 
 	@Override

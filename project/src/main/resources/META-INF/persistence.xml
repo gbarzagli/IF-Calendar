@@ -3,9 +3,10 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
 
-    <persistence-unit name="manager">
+    <persistence-unit name="calendar">
 
         <class>model.Teste</class>
+        <class>model.User</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
@@ -13,9 +14,17 @@
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="root" />
 
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <!-- Configurações específicas do Hibernate -->
+			<!-- Dialeto do SGBD para a geração do SQL específico/adequado -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+
+            <!-- Causa criação/alteração automática de uma Tabela no Banco de Dados
+			     para cada Entidade/Modelo mapeado pelo Hibernate -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+
+            <!-- Mostra as SQLs geradas pelo framework -->
+            <property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
         </properties>
     </persistence-unit>
 

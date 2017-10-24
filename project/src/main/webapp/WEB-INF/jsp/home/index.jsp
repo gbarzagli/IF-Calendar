@@ -4,25 +4,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>IF Calendar</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>IF Calendar</title>
+	
+	<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
 </head>
 <body>
-	<form method="post" action="<c:url value='/login'/>">
-		<div style="display: flex; align-items: center; justify-content: center;">
-			<div style="display: flex; flex-direction: column; width: 250px; justify-content: center; align-items: center;">
-				<h1>IF CALENDAR</h1>
-				<div style="margin-top: 40px;">
-					<span>Login: </span>
-					<input name="user.login">
-				</div>
-				<div style="margin-top: 5px;">
-					<span>Password: </span>
-					<input name="user.password">
-				</div>
-				<input style="margin-top: 30px; width: 70px;" type="submit" value="Log In">
-			</div>
-		</div>
+  
+	<form method="post" action="<c:url value='/home/login'/>">
+		<div class="login-page-bg">
+	    	<div class="container">
+	    		<div class="row">
+					<div class="login-container col-md-push-4 col-md-4 col-sm-push-4 col-sm-4 col-lg-push-4 col-lg-4">
+	            		<h3>Faça seu login!</h3>
+	            		<label for="username">Usuário</label>
+	            		<input type="email" placeholder="example@example.com" id="username" name="user.login"/>
+	            		<label for="password">Senha</label>
+	            		<input type="password" id="password" name="user.password"/>
+	            		<button class="button-primary">LOGIN</button>
+	          		</div>
+	        	</div>
+	      	</div>
+	    </div>
 	</form>
+	
+	<script src="<c:url value="/js/jquery-3.2.1.min.js"/>"></script>
+    <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
 </body>
 </html>
