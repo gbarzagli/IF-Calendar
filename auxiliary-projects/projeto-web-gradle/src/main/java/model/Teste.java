@@ -16,6 +16,10 @@ public class Teste {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    
+    @Column
+    private Integer value;
+    
     /**
      * @return the id
      */
@@ -29,10 +33,7 @@ public class Teste {
     public void setId(Long id) {
         this.id = id;
     }
-
-    @Column
-    private Integer value;
-
+    
     /**
      * @return the value
      */
