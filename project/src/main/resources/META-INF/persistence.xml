@@ -6,6 +6,7 @@
     <persistence-unit name="manager">
 
         <class>model.Teste</class>
+        <class>model.User</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

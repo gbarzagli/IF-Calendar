@@ -1,0 +1,62 @@
+*{
+  color: #fff;
+}
+
+body{
+  background-size: cover;
+  background-image: url("../imgs/background.png");
+}
+
+.login-container{
+  border: 4px #54e1da solid;
+  top: 20%;
+  padding: 40px 50px;
+  margin: 0 20px;
+}
+
+.login-page-bg{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.login-page-bg, .login-page-bg > div, .login-page-bg > div > div{
+  height: 100%;
+}
+
+.login-container > h3{
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.login-container > input[type="password"], .login-container > input[type="email"]{
+  background-color: transparent;
+  display: block;
+  border:0;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: #fff 2px solid;
+  outline: none;
+}
+
+.button-primary{
+  left:calc(50% - 40px);
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #111111;
+  position: relative;
+  outline: none;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 1.3rem;
+  border-radius: 30px;
+  border: 0;
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        background-size: initial;
+    }
+}
