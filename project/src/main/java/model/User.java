@@ -2,10 +2,8 @@ package model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
 public class User extends EntityObject{
 	
 	public static final String CLASS_NAME = "User";
