@@ -16,9 +16,6 @@ public class Teste extends EntityObject {
     @Column
     private Integer value;
     
-    public Teste () {
-    }
-    
     @Override
     public Long getId() {
         return id;

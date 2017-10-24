@@ -19,6 +19,8 @@ public class DAOFactory {
                 return JDBCTesteDAO.getInstance();
             case DAOConstants.JPA:
                 return HibernateTesteDAO.getInstance();
+            default:
+                break;
         }
         return null;
     }

@@ -20,9 +20,10 @@ public class HomeController {
     	result.include("login", user.getLogin());
     }
     
+    /**
+     * Method responsible to the first page of this app.
+     */
     @Path("/")
     public void index() {
-    	
     }
-
 }

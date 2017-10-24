@@ -25,7 +25,8 @@ public class ConnectionFactory {
             case ConnectionConstants.MYSQL:
                 Class.forName("com.mysql.jdbc.Driver");
                 return DriverManager.getConnection("jdbc:mysql://localhost:3306/calendar");
+            default:
+                return null;
         }
-        return null;
     }
 }

@@ -20,6 +20,8 @@ public class ConnectionFactory {
                 return DriverManager.getConnection("jdbc:hsqldb:mem:banco-em-memoria", "", "");
             case ConnectionConstants.MYSQL:
                 break;
+            default:
+                break;
         }
         return null;
     }

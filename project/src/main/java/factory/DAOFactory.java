@@ -19,7 +19,8 @@ public class DAOFactory {
         switch (type) {
             case DAOConstants.TESTE_CLASS:
                 return new TesteDAO();
+            default:
+                return null;
         }
-        return null;
     }
 }
