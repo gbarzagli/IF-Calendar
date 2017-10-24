@@ -16,8 +16,13 @@ public class HomeController {
     
     @Path("/login")
     @Post
-    public void logIn(User user) {
+    public void login(User user) {
     	result.include("login", user.getLogin());
+    }
+    
+    @Path("/")
+    public void index() {
+    	
     }
 
 }
