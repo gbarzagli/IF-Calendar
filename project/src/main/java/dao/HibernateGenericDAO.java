@@ -15,7 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
  */
 public abstract class HibernateGenericDAO<T> implements GenericDAO<T> {
 
-    private EntityManagerFactory factory;
+    private final EntityManagerFactory factory;
     private Class<T> classObject;
 
     protected HibernateGenericDAO() {
