@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
 </head>
 <body>
+  
 	<form method="post" action="<c:url value='/home/login'/>">
 		<div class="login-page-bg">
 	    	<div class="container">
 	    		<div class="row">
 					<div class="login-container col-md-push-4 col-md-4 col-sm-push-4 col-sm-4 col-lg-push-4 col-lg-4">
-	            		<h3>FaÁa seu login!</h3>
-	            		<label for="username">Usu·rio</label>
+	            		<h3>Fa√ßa seu login!</h3>
+	            		<label for="username">Usu√°rio</label>
 	            		<input type="email" placeholder="example@example.com" id="username" name="user.login"/>
 	            		<label for="password">Senha</label>
 	            		<input type="password" id="password" name="user.password"/>
