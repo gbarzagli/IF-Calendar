@@ -8,7 +8,7 @@
 <title>IF Calendar</title>
 </head>
 <body>
-	<form method="post" action="<c:url value='/home/logIn'/>">
+	<form method="post" action="<c:url value='/login'/>">
 		<div style="display: flex; align-items: center; justify-content: center;">
 			<div style="display: flex; flex-direction: column; width: 250px; justify-content: center; align-items: center;">
 				<h1>IF CALENDAR</h1>
