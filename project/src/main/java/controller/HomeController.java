@@ -25,5 +25,6 @@ public class HomeController {
      */
     @Path("/")
     public void index() {
+        // Redirect to first page of this app.
     }
 }
