@@ -22,7 +22,8 @@ public class DAOFactory {
                 return new TesteDAO();
             case DAOConstants.USER_CLASS:
             	return new UserDAO();
+            default:
+                return null;
         }
-        return null;
     }
 }

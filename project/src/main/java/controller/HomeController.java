@@ -25,8 +25,10 @@ public class HomeController {
     	}
     }
     
+    /**
+     * Method responsible to the first page of this app.
+     */
     @Path("/")
     public void index() {
-    	
     }
 }

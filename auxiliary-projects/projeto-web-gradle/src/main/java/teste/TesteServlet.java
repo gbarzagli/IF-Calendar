@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Teste;
 import dao.TesteDAO;
 import factory.DAOFactory;
-import factory.constants.DAOConstants;;
+import factory.constants.DAOConstants;
 
 @WebServlet("/teste-servlet")
 public class TesteServlet extends HttpServlet {

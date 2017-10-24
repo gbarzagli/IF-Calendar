@@ -1,5 +1,6 @@
 package dao;
 
+import java.rmi.UnexpectedException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +27,7 @@ public class JDBCTesteDAO implements TesteDAO {
             statement.close();
             conn.close();
 		} catch (SQLException | ClassNotFoundException e) {
-			throw new RuntimeException(e);
+			throw new UnexpectedException(e.getMessage());
 		}
     }
 
@@ -46,7 +47,7 @@ public class JDBCTesteDAO implements TesteDAO {
             statement.close();
             conn.close();
 		} catch (SQLException | ClassNotFoundException e) {
-			throw new RuntimeException(e);
+			throw new UnexpectedException(e.getMessage());
 		}
     }
 
@@ -66,7 +67,7 @@ public class JDBCTesteDAO implements TesteDAO {
             statement.close();
             conn.close();
 		} catch (SQLException | ClassNotFoundException e) {
-			throw new RuntimeException(e);
+			throw new UnexpectedException(e.getMessage());
         }
         return list;
     }
