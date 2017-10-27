@@ -4,13 +4,6 @@ This project is for Web Development classes.
 It is developed in Java using VRaptor 4 framework with HTML5, CSS3 and its dependencies are managed by Gradle.
 
 ### TO RUN THE PROJECT
-Open MySQL and copy-paste the code below: (only on the first run)
-```sql
-create database calendar;
-use calendar;
-create table teste(id int auto_increment primary key, `value` int not null);
-```
-
 Open terminal inside the project folder and type the code below:
 ```sh
 ./gradlew clean tomcatRun
