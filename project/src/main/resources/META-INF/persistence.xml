@@ -5,8 +5,10 @@
 
     <persistence-unit name="calendar">
 
-        <class>model.Teste</class>
+        <class>model.Event</class>
+        <class>model.Permission</class>
         <class>model.User</class>
+        <class>model.Calendar</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

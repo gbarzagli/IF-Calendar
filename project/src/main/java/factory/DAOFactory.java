@@ -1,7 +1,8 @@
 package factory;
 
+import dao.CalendarDAO;
+import dao.EventDAO;
 import dao.GenericDAO;
-import dao.TesteDAO;
 import dao.UserDAO;
 import factory.constants.DAOConstants;
 
@@ -16,12 +17,15 @@ public class DAOFactory {
     private DAOFactory () {
     }
 
+    @SuppressWarnings("rawtypes")
     public static GenericDAO getDAO(String type) {
         switch (type) {
-            case DAOConstants.TESTE_CLASS:
-                return new TesteDAO();
             case DAOConstants.USER_CLASS:
             	return new UserDAO();
+            case DAOConstants.CALENDAR_CLASS:
+                return new CalendarDAO();
+            case DAOConstants.EVENT_CLASS:
+                return new EventDAO();
             default:
                 return null;
         }
