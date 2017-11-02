@@ -11,7 +11,7 @@ public class Permission {
     private PermissionId id;
     
     @Column
-    private boolean write;
+    private boolean canWrite;
     
     public PermissionId getId() {
         return id;
@@ -22,11 +22,11 @@ public class Permission {
     }
 
     public boolean canWrite() {
-        return write;
+        return canWrite;
     }
 
-    public void setWrite(boolean write) {
-        this.write = write;
+    public void setCanWrite(boolean write) {
+        this.canWrite = write;
     }
     
 }

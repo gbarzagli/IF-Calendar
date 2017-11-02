@@ -32,11 +32,11 @@ public class HomeController {
     @Path("/")
     public void index() {
         // Redirect to first page of this app.
-//        User user = new User();
-//        user.setName("user");
-//        user.setEmail("user@user.com");
-//        user.setPassword("null");
-//        UserDAO userDAO = (UserDAO) DAOFactory.getDAO(DAOConstants.USER_CLASS);
-//        userDAO.insert(user);
+        User user = new User();
+        user.setName("user");
+        user.setEmail("user@user.com");
+        user.setPassword("null");
+        UserDAO userDAO = (UserDAO) DAOFactory.getDAO(DAOConstants.USER_CLASS);
+        userDAO.insert(user);
     }
 }

@@ -25,7 +25,7 @@ public class Event extends EntityObject {
     private Date end;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "calendar_id", referencedColumnName = "id")
     private Calendar calendar;
 
     public String getName() {

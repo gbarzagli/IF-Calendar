@@ -22,7 +22,7 @@ public class Calendar extends EntityObject {
     private Date creation;
     
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private User owner;
     
     @OneToMany(mappedBy = "calendar", targetEntity = Event.class, cascade = CascadeType.ALL)
