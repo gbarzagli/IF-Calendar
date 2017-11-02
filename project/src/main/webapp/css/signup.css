@@ -7,29 +7,29 @@ body{
   background-image: url("../imgs/background.png");
 }
 
-.login-container{
+.signup-container{
   border: 4px #54e1da solid;
   top: 20%;
   padding: 40px 50px;
   margin: 0 20px;
 }
 
-.login-page-bg{
+.signup-page-bg{
   height: 100%;
   width: 100%;
   position: absolute;
 }
 
-.login-page-bg, .login-page-bg > div, .login-page-bg > div > div{
+.signup-page-bg, .signup-page-bg > div, .signup-page-bg > div > div{
   height: 100%;
 }
 
-.login-container > h3{
+.signup-container > h3{
   margin: 0;
   margin-bottom: 20px;
 }
 
-.login-container > input[type="password"], .login-container > input[type="email"]{
+.signup-container > input[type="password"], .signup-container > input[type="email"], .signup-container > input[type="text"]{
   background-color: transparent;
   display: block;
   border:0;
@@ -55,7 +55,7 @@ body{
   border: 0;
 }
 
-.login-error{
+.signup-error{
 	display: block;
     margin-bottom: 20px;
     color: red;

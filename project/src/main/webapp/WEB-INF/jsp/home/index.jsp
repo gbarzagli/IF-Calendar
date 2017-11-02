@@ -12,17 +12,18 @@
 </head>
 <body>
   
-	<form method="post" action="<c:url value='/home/login'/>">
+	<form method="post" action="<c:url value='/'/>">
 		<div class="login-page-bg">
 	    	<div class="container">
 	    		<div class="row">
 					<div class="login-container col-md-push-4 col-md-4 col-sm-push-4 col-sm-4 col-lg-push-4 col-lg-4">
-	            		<h3>Faça seu login!</h3>
-	            		<label for="username">Usuário</label>
-	            		<input type="email" placeholder="example@example.com" id="username" name="user.login"/>
-	            		<label for="password">Senha</label>
+	            		<h3>Welcome!</h3>
+	            		<label for="username">User</label>
+	            		<input type="email" placeholder="example@example.com" id="username" name="user.email"/>
+	            		<label for="password">Password</label>
 	            		<input type="password" id="password" name="user.password"/>
-	            		<button class="button-primary">LOGIN</button>
+	            		<button class="button-primary" name="login" value="login" >LOGIN</button>
+	            		<button class="button-primary" name="signup" value="signup" >SIGNUP</button>
 	          		</div>
 	        	</div>
 	      	</div>
