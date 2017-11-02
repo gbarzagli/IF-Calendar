@@ -13,33 +13,33 @@ import model.User;
 @Controller
 public class HomeController {
 
-    @Inject
-    private Result result;
-    
-    @Path("/login")
-    public void login(User user) {
-    	result.include("login", user.getEmail());
-    }
-    
-    /**
-     * Method responsible to the first page of this app.
-     * @throws WrongTransaction 
-     */
-    @Path("/")
-    public void index(User user, String signup, String login) throws WrongTransaction {
-        if(login != null) {
-        	if(user != null && !user.getEmail().trim().isEmpty() && !user.getPassword().trim().isEmpty()) {
-        		UserDAO userDAO = new UserDAO();
-        		User userLogged = userDAO.findUserByEmail(user.getEmail());
-        		if(userLogged != null) {
-        			result.redirectTo(HomeController.class).login(user);
-        		}
-        		else {
-        			result.include("validation", "Wrong login or password");
-        		}
-        	}
-        }else if(signup != null) {
-        	result.redirectTo(SignUpController.class).signup();
-        }
-    }
+	@Inject
+	private Result result;
+
+	@Path("/main")
+	public void main(User user) {
+		result.include("login", user.getEmail());
+	}
+
+	/**
+	 * Method responsible to the first page of this app.
+	 * 
+	 * @throws WrongTransaction
+	 */
+	@Path("/")
+	public void index(User user, String signup, String login) throws WrongTransaction {
+		if (login != null) {
+			if (user != null && !user.getEmail().trim().isEmpty() && !user.getPassword().trim().isEmpty()) {
+				UserDAO userDAO = new UserDAO();
+				User userLogged = userDAO.findUserByEmail(user.getEmail());
+				if (userLogged != null) {
+					result.redirectTo(HomeController.class).main(user);
+				} else {
+					result.include("validation", "Wrong login or password");
+				}
+			}
+		} else if (signup != null) {
+			result.redirectTo(SignUpController.class).signup();
+		}
+	}
 }
