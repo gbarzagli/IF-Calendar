@@ -24,6 +24,6 @@ public class SignUpController {
 	 @Post("/signUp/insert")
 	 public void insert(User user) throws WrongTransaction {
 		 System.out.println(user.getName());
-		 result.redirectTo(HomeController.class).index(user, null, null);
+		 result.redirectTo(HomeController.class).index();
 	 }
 }
