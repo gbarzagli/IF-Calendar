@@ -27,6 +27,7 @@ public class SignUpController {
 	 }
 	 
 	 @Post("/signUp/insert")
+<<<<<<< HEAD
 	 public void insert(User user){
 		 try {
 			 if(user != null && user.getName() != null && user.getEmail() != null && user.getPassword() != null && !user.getName().trim().isEmpty() && !user.getEmail().trim().isEmpty() && !user.getPassword().trim().isEmpty())  {
@@ -61,5 +62,10 @@ public class SignUpController {
 			e.printStackTrace();
 			System.out.println("Error ocurred trying encrypt");
 		}
+=======
+	 public void insert(User user) throws WrongTransaction {
+		 System.out.println(user.getName());
+		 result.redirectTo(HomeController.class).index();
+>>>>>>> refs/heads/master
 	 }
 }

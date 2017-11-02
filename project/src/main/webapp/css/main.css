@@ -1,43 +1,285 @@
-*{
-  color: #fff;
+* {
+	color: #fff;
+	outline: 0 !important;
+	font-family: Roboto !important;
 }
 
-body{
-  background-size: cover;
-  background-image: url("../imgs/background.png");
+body {
+	background-color: #111111;
 }
 
-.login-container{
-  border: 4px #54e1da solid;
-  top: 20%;
-  padding: 40px 50px;
-  margin: 0 20px;
+@media ( min-width : 1200px) bootstrap.min.css:9 .container {
+	max-width
+	:
+	 
+	60%
+	!
+	important
+	;
+	
+
 }
 
-.login-page-bg{
-  height: 100%;
-  width: 100%;
-  position: absolute;
+@media screen and (max-width: 480px) {
+	body {
+		background-size: initial;
+	}
+	.month-calendar {
+		font-size: 1.5em !important;
+	}
 }
 
-.login-page-bg, .login-page-bg > div, .login-page-bg > div > div{
-  height: 100%;
+.login-body {
+	background-size: cover;
+	background-image: url(../img/background.png);
 }
 
-.login-container > h3{
-  margin: 0;
-  margin-bottom: 20px;
+.login-container {
+	border: 4px #54e1da solid;
+	top: 20%;
+	padding: 40px 50px;
+	margin: 0 20px;
 }
 
-.login-container > input[type="password"], .login-container > input[type="email"]{
-  background-color: transparent;
-  display: block;
-  border:0;
-  width: 100%;
-  align-items: center;
-  margin-bottom: 30px;
-  border-bottom: #fff 2px solid;
-  outline: none;
+.login-page-bg {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
+.login-page-bg, .login-page-bg>div, .login-page-bg>div>div {
+	height: 100%;
+}
+
+.login-container>h3 {
+	margin: 0;
+	margin-bottom: 20px;
+}
+
+input {
+	display: block;
+	width: 100%;
+}
+
+select, input {
+	background-color: transparent;
+	border: 0;
+	border-bottom: #fff 2px solid;
+	outline: none;
+	margin-bottom: 15px;
+	align-items: center;
+}
+
+input::placeholder, textarea::placeholder {
+	color: #dffffd;
+}
+
+select>option {
+	border: 0;
+	color: gray;
+}
+
+.login-container>input[type="password"], .login-container>input[type="email"]
+	{
+	
+}
+
+.button-primary {
+	left: calc(50% - 40px);
+	padding: 10px 20px;
+	background-color: #fff;
+	color: #111111;
+	position: relative;
+	outline: none;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-bottom: 40px;
+	font-size: 1.3rem;
+	border-radius: 30px;
+	border: 0;
+}
+
+.calendar-container {
+	width: 70%;
+	margin-bottom: 10vh;
+	margin-top: 15vh;
+}
+
+.calendar-div {
+	z-index: 1;
+	padding: 0;
+	box-shadow: 1px 0px 5px #38918c;
+	border-radius: 1% 0 0 1%;
+	height: 75vh;
+	background-color: #54e1da;
+}
+
+.events-div {
+	border-radius: 0 1% 1% 0;
+	top: 2vh;
+	height: 70vh;
+	background-color: #45c1bb;
+}
+
+.events-div>h3 {
+	padding-top: 15px;
+	margin-top: 0;
+}
+
+.month-calendar {
+	font-size: 2em;
+	text-align: center;
+	margin: 0;
+	font-weight: bold;
+	line-height: 11vh;
+}
+
+.calendar-header {
+	height: 15%;
+}
+
+.calendar-header>* {
+	display: inline;
+	position: relative;
+	height: 100%;
+	padding: 0;
+}
+
+.calendar-header>a>img {
+	position: absolute;
+	top: 33%;
+	left: 40%;
+}
+
+.calendar-body {
+	height: 85%;
+	color: #54e1da;
+	background-color: #fff;
+	border-radius: 0 0 0 1%;
+	padding: 20px;
+}
+
+.table-calendar {
+	height: 90%;
+}
+
+.table-calendar>*>*>* {
+	text-align: center;
+	color: black;
+	padding: 0 !important;
+	vertical-align: middle !important;
+}
+
+.table-calendar>thead>tr>th {
+	color: #3ea39e;
+	font-size: 25px;
+}
+
+.table-calendar {
+	height: 90%;
+}
+
+.table-calendar>tbody>tr>td>div:hover {
+	background-color: #54e1da;
+	border-radius: 100%;
+	color: #fff;
+	width: 30px;
+	border: 1px solid #53e0d9;
+	box-shadow: 1px 3px 15px #c9c9c9;
+	height: 30px;
+	font-size: 12px;
+	padding: 7px;
+	font-weight: bold;
+	transition: box-shadow 0.5s, background-color 0.5s, border-color 0.5s,
+		transform 2s;
+	transition: font-size 0.15s, font-weight 0.5s, color 0.1s, transform 2s;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.table-calendar>tbody>tr>td>div {
+	background-color: transparent;
+	border-radius: 100%;
+	font-size: 14px;
+	color: gray;
+	width: 30px;
+	height: 30px;
+	padding: 6px;
+	margin: 0 auto;
+}
+
+.action-buttons>button {
+	border: 0;
+	float: right;
+	background-color: transparent;
+	color: #fff;
+	font-weight: 600;
+	font-size: 13px;
+	height: 26px;
+	width: 26px;
+	margin-right: 5px;
+	border-radius: 100%;
+}
+
+.action-buttons>button:first-child {
+	margin-right: 0px;
+}
+
+.event-title {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.event-title>label>span {
+	font-size: 14px;
+}
+
+.event-items {
+	display: block;
+	overflow-y: auto;
+	height: 70%;
+}
+
+.event-items>div {
+	display: flow-root;
+	padding-bottom: 15px;
+	margin-bottom: 40px;
+}
+
+.event-hour {
+	float: right;
+}
+
+.event-description {
+	margin: 5px 0;
+}
+
+.info-event {
+	box-shadow: 0px 2px 6px -4px #fff;
+}
+
+.info-event>p {
+	font-size: 12px;
+}
+
+.add-event {
+	background-color: #fff;
+	color: #45c1bb;
+	font-weight: 700;
+	font-size: 30px;
+	box-shadow: 1px 3px 10px #38918c;
+	height: 50px;
+	position: absolute;
+	width: 50px;
+	border: 0;
+	border-radius: 100%;
+	bottom: 6%;
+	right: 7%;
+}
+
+.add-event:hover {
+	box-shadow: 1px 3px 10px #3aa39d;
+	transition: box-shadow 0.1s, transition 0s;
 }
 
 .button-primary{
@@ -53,16 +295,68 @@ body{
   font-size: 1.3rem;
   border-radius: 30px;
   border: 0;
+.event-description>textarea {
+	margin: 0px;
+	width: 100%;
+	height: 68px;
+	background-color: transparent;
+	border: 0;
+	border-bottom: 2px solid #fff;
+	resize: none;
+	overflow-y: auto;
+}
+/**/
+input.add-event-day, textarea.add-event-day {
+	font-weight: 300;
+	transition: padding-top 0.2s ease, margin-top 0.2s ease;
+	overflow-x: hidden;
+	z-index: 10;
+.event-description>textarea {
+	margin: 0px;
+	width: 100%;
+	height: 68px;
+	background-color: transparent;
+	border: 0;
+	border-bottom: 2px solid #fff;
+	resize: none;
+	overflow-y: auto;
+}
+/**/
+input.add-event-day, textarea.add-event-day {
+	font-weight: 300;
+	transition: padding-top 0.2s ease, margin-top 0.2s ease;
+	overflow-x: hidden;
+	z-index: 10;
 }
 
-.login-error{
+input.add-event-day+label, textarea.add-event-day+label {
 	display: block;
-    margin-bottom: 20px;
-    color: red;
+	position: relative;
+	white-space: nowrap;
+	padding: 0;
+	font-weight: 700;
+	margin: 0;
+	-webkit-transition: width 0.4s ease;
+	transition: width 0.4s ease;
+	height: 0px;
 }
 
-@media screen and (max-width: 480px) {
-    body {
-        background-size: initial;
-    }
+input.add-event-day:focus+label>span, input.add-event-day:valid+label>span
+	{
+	top: -65px;
+}
+
+textarea.add-event-day:focus+label>span, textarea.add-event-day:valid+label>span
+	{
+	top: -90px;
+}
+
+input.add-event-day+label>span, textarea.add-event-day+label>span {
+	font-weight: 700;
+	margin: 0;
+	position: absolute;
+	top: -45px;
+	left: 0px;
+	-webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+	transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
 }
