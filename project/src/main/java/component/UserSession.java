@@ -8,7 +8,9 @@ import model.User;
 
 @SessionScoped
 public class UserSession implements Serializable {
-	private User user;
+    private static final long serialVersionUID = 5504691787911763506L;
+    
+    private User user;
 
 	public void login(User user) {
 		this.user = user;

@@ -46,4 +46,6 @@ dependencies {
   compile 'org.hsqldb:hsqldb:2.3.2'
   compile 'mysql:mysql-connector-java:5.1.13'
   compile 'commons-validator:commons-validator:1.6'
+  compile 'commons-codec:commons-codec:1.10'
+  
 }
