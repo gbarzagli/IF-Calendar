@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity
-public class User extends EntityObject {
+public class User extends EntityObject implements Serializable {
 
     public static final String CLASS_NAME = "User";
 

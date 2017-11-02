@@ -7,18 +7,21 @@ import org.omg.CORBA.WrongTransaction;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
-import dao.UserDAO;
+import component.UserSession;
 import model.User;
 
 @Controller
 public class HomeController {
 
 	@Inject
+	private UserSession userSession;
+
+	@Inject
 	private Result result;
 
 	@Path("/main")
 	public void main(User user) {
-		result.include("login", user.getEmail());
+		
 	}
 
 	/**
@@ -27,19 +30,12 @@ public class HomeController {
 	 * @throws WrongTransaction
 	 */
 	@Path("/")
-	public void index(User user, String signup, String login) throws WrongTransaction {
-		if (login != null) {
-			if (user != null && !user.getEmail().trim().isEmpty() && !user.getPassword().trim().isEmpty()) {
-				UserDAO userDAO = new UserDAO();
-				User userLogged = userDAO.findUserByEmail(user.getEmail());
-				if (userLogged != null) {
-					result.redirectTo(HomeController.class).main(user);
-				} else {
-					result.include("validation", "Wrong login or password");
-				}
-			}
-		} else if (signup != null) {
-			result.redirectTo(SignUpController.class).signup();
+	public void index() throws WrongTransaction {
+		if (!userSession.isLogged()) {
+			result.redirectTo(LoginController.class).index();
+		}
+		else{
+			result.redirectTo(HomeController.class).main(userSession.getUser());
 		}
 	}
 }

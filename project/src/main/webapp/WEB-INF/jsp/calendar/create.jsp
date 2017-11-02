@@ -7,12 +7,12 @@
 <title>IFCalendar</title>
 </head>
 <body>
-	<form action="" method="post">
-		<button onClick="createCalendar()">Create calendar</button>
-		<button onClick="listCalendar()">Calendars I can see</button>
-		<button onClick="logout()">Logout</button>
+	<form action="<c:url value="/calendar/insert"/>" method="post">
+		<label for="name">Name: </label> </br>
+		<input type="text" name="name"/></br></br>
+		<label for="invitedUser">Invite user: </label></br>
+		<input type="text" name="invitedUser"/></br></br>
+		<input type="submit" value="Create"/>
 	</form>
-
-	<script src="<c:url value="/js/main.js"/>"></script>
 </body>
 </html>
