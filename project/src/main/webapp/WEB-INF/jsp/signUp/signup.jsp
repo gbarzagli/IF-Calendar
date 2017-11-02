@@ -17,13 +17,14 @@
 	    		<div class="row">
 					<div class="signup-container col-md-push-4 col-md-4 col-sm-push-4 col-sm-4 col-lg-push-4 col-lg-4">
 	            		<h3>SignUp!</h3>
-	            		<label for="name">User</label>
+	            		<label for="name">Name</label>
 	            		<input type="text" id="name" name="user.name"/>
-	            		<label for="username">User</label>
-	            		<input type="email" placeholder="example@example.com" id="username" name="user.login"/>
+	            		<label for="username">email</label>
+	            		<input type="email" placeholder="example@example.com" id="username" name="user.email"/>
 	            		<label for="password">Password</label>
 	            		<input type="password" id="password" name="user.password"/>
 	            		<button class="button-primary">SIGNUP</button>
+	            		<span class="signup-error"><c:if test="${not empty validation}"><c:out value="${validation}"></c:out></c:if></span>
 	          		</div>
 	        	</div>
 	      	</div>
