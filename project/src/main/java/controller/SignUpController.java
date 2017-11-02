@@ -27,7 +27,6 @@ public class SignUpController {
 	 }
 	 
 	 @Post("/signUp/insert")
-<<<<<<< HEAD
 	 public void insert(User user){
 		 try {
 			 if(user != null && user.getName() != null && user.getEmail() != null && user.getPassword() != null && !user.getName().trim().isEmpty() && !user.getEmail().trim().isEmpty() && !user.getPassword().trim().isEmpty())  {
@@ -44,7 +43,7 @@ public class SignUpController {
 						 user.setEmail(EncryptationMD5.encrypt(user.getEmail()));
 						 user.setPassword(EncryptationMD5.encrypt(user.getPassword()));
 						 userDAO.insert(user);
-						 result.redirectTo(HomeController.class).index(user, null, null);
+						 result.redirectTo(HomeController.class).index();
 					 }
 				 } else {
 					 result.include("validation", "Try a valid e-mail");
@@ -62,10 +61,5 @@ public class SignUpController {
 			e.printStackTrace();
 			System.out.println("Error ocurred trying encrypt");
 		}
-=======
-	 public void insert(User user) throws WrongTransaction {
-		 System.out.println(user.getName());
-		 result.redirectTo(HomeController.class).index();
->>>>>>> refs/heads/master
 	 }
 }
