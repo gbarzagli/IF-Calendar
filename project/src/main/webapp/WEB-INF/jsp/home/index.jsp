@@ -24,6 +24,7 @@
 	            		<input type="password" id="password" name="user.password"/>
 	            		<button class="button-primary" name="login" value="login" >LOGIN</button>
 	            		<button class="button-primary" name="signup" value="signup" >SIGNUP</button>
+	            		<span class="login-error"><c:if test="${not empty validation}"><c:out value="${validation}"></c:out></c:if></span>
 	          		</div>
 	        	</div>
 	      	</div>

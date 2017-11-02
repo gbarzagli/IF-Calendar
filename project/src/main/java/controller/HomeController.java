@@ -28,7 +28,7 @@ public class HomeController {
     @Path("/")
     public void index(User user, String signup, String login) throws WrongTransaction {
         if(login != null) {
-        	if(user != null && !user.getEmail().trim().isEmpty() && !user.getPassword().trim().isEmpty()) {
+        	if(user != null && user.getEmail() != null && user.getPassword() != null && !user.getEmail().trim().isEmpty() && !user.getPassword().trim().isEmpty()) {
         		UserDAO userDAO = new UserDAO();
         		User userLogged = userDAO.findUserByEmail(user.getEmail());
         		if(userLogged != null) {
@@ -36,6 +36,7 @@ public class HomeController {
         		}
         		else {
         			result.include("validation", "Wrong login or password");
+        			result.redirectTo(HomeController.class).index(user, null, null);
         		}
         	}
         }else if(signup != null) {
