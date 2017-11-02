@@ -12,7 +12,7 @@ public class User extends EntityObject {
 
     public static final String CLASS_NAME = "User";
 
-    @Column
+    @Column(unique = true)
     private String email;
     @Column
     private String password;
