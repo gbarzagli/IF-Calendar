@@ -10,6 +10,10 @@ import model.User;
 
 public class CalendarDAO extends HibernateGenericDAO<Calendar> {
 
+    public CalendarDAO() {
+        super(Calendar.class);
+    }
+
     public Calendar findCalendarByName(String name) {
         EntityManager entityManager = factory.createEntityManager();
         Query query = (Query) entityManager.createQuery("from Calendar c where c.name = :name");

@@ -19,10 +19,9 @@
 					<div
 						class="login-container col-md-push-4 col-md-4 col-sm-push-4 col-sm-4 col-lg-push-4 col-lg-4">
 						<h3>Welcome!</h3>
-						<label for="username">User</label> <input type="email"
-							placeholder="example@example.com" id="username" name="user.email" />
-						<label for="password">Password</label> <input type="password"
-							id="password" name="user.password" />
+						<label for="username">User</label> 
+						<input type="email" placeholder="example@example.com" id="username" name="user.email" />
+						<label for="password">Password</label> <input type="password" id="password" name="user.password" />
 						<button class="button-primary" name="login" value="login">LOGIN</button>
 						<button class="button-primary" name="signup" value="signup">SIGNUP</button>
 					</div>

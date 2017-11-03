@@ -9,6 +9,10 @@ import model.User;
 
 public class UserDAO extends HibernateGenericDAO<User> {
 
+    public UserDAO() {
+        super(User.class);
+    }
+    
     public User findUserByEmail(String email) {
         EntityManager entityManager = factory.createEntityManager();
         Query query = (Query) entityManager.createQuery("from User u where u.email = :email");

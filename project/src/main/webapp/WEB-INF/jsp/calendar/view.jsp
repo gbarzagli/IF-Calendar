@@ -11,13 +11,12 @@
 	
 	<form action="" method="post">		
 		<button onClick="addEvent()">Add event</button>
+		<ul>
+			<c:forEach items="${eventList}" var="event">
+				<li> ${event.start} <a href="<c:url value="/event/${event.id}"/>">${event.name}</a> <button onclick="edit(${event.id})">Edit</button><button onclick="remove(${event.id})">Delete</button></li>
+			</c:forEach>
+		</ul>
 	</form>
-	
-	<ul>
-		<c:forEach items="${eventList}" var="event">
-			<li> ${event.start} <a href="<c:url value="/event/${event.id}"/>">${event.name}</a> <button>Edit</button><button>Delete</button></li>
-		</c:forEach>
-	</ul>
 	
 	<script src="<c:url value="/js/calendar.js"/>"></script>
 </body>

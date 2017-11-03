@@ -35,10 +35,50 @@ public class EventController {
 	public void insert(Event event) throws WrongTransaction {
 		EventDAO eventDAO = (EventDAO) DAOFactory.getDAO(DAOConstants.EVENT_CLASS);
 		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
-		System.out.println("AQUI!!!" + userSession.getCalendar().getId());
 		Calendar calendar = calendarDAO.findByKey(userSession.getCalendar().getId());
 		event.setCalendar(calendar);
 		eventDAO.insert(event);		
 		result.redirectTo(HomeController.class).index();
+	}
+	
+	@Path("/{event.id}")
+	public void view(Event event) {
+	    if (!userSession.isLogged()) {
+            result.redirectTo(HomeController.class).index();
+        }
+	    
+	    EventDAO eventDAO = (EventDAO) DAOFactory.getDAO(DAOConstants.EVENT_CLASS);
+	    event = eventDAO.findByKey(event.getId());
+	    result.include("event", event);
+	}
+	
+	@Path("/edit/{event.id}")
+	public void edit(Event event) {
+	    if (!userSession.isLogged()) {
+            result.redirectTo(HomeController.class).index();
+        }
+	    
+	    EventDAO eventDAO = (EventDAO) DAOFactory.getDAO(DAOConstants.EVENT_CLASS);
+	    event = eventDAO.findByKey(event.getId());
+	    result.include("event", event);
+	}
+	
+	@Path("/edit/{event.id}/update")
+    public void update(Event event) {
+        EventDAO eventDAO = (EventDAO) DAOFactory.getDAO(DAOConstants.EVENT_CLASS);
+        CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
+        Calendar calendar = calendarDAO.findByKey(userSession.getCalendar().getId());
+        event.setCalendar(calendar);
+        eventDAO.update(event);
+        event = eventDAO.findByKey(event.getId());
+        result.redirectTo(CalendarController.class).view(event.getCalendar());
+    }
+	
+	@Path("/delete/{event.id}")
+	public void delete(Event event) {
+	    EventDAO eventDAO = (EventDAO) DAOFactory.getDAO(DAOConstants.EVENT_CLASS);
+	    event = eventDAO.findByKey(event.getId());
+	    eventDAO.remove(event.getId());
+	    result.redirectTo(CalendarController.class).view(event.getCalendar());
 	}
 }

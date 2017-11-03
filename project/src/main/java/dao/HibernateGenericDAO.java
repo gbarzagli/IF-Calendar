@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,8 +17,9 @@ public abstract class HibernateGenericDAO<T> implements GenericDAO<T> {
     protected final EntityManagerFactory factory;
     protected Class<T> classObject;
 
-    protected HibernateGenericDAO() {
+    protected HibernateGenericDAO(Class<T> clazz) {
         factory = Persistence.createEntityManagerFactory("calendar");
+        classObject = clazz;
     }
 
     @Override
@@ -40,7 +42,7 @@ public abstract class HibernateGenericDAO<T> implements GenericDAO<T> {
     @SuppressWarnings("unchecked")
     public List<T> all() {
         EntityManager entityManager = factory.createEntityManager();
-        Query query = (Query) entityManager.createQuery("from User");
+        Query query = (Query) entityManager.createQuery("from " +  classObject.getSimpleName());
         return (List<T>) query.getResultList();
     }
 
@@ -50,9 +52,10 @@ public abstract class HibernateGenericDAO<T> implements GenericDAO<T> {
         return entityManager.find(classObject, id);
     }
 
-    public void remove(T object) {
+    public void remove(Long id) {
         EntityManager entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
+        T object = entityManager.find(classObject, id);
         entityManager.remove(object);
         entityManager.getTransaction().commit();
     }

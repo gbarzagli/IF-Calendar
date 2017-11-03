@@ -10,6 +10,10 @@ import model.Event;
 
 public class EventDAO extends HibernateGenericDAO<Event> {
     
+    public EventDAO() {
+        super(Event.class);
+    }
+    
     public Event findEventByName(String name) {
         EntityManager entityManager = factory.createEntityManager();
         Query query = (Query) entityManager.createQuery("from Event e where e.name = :name");
