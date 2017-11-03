@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Result;
 import component.UserSession;
 import dao.UserDAO;
 import model.User;
+import static utils.Utils.encrypt;
 
 @Controller
 public class LoginController {
@@ -38,10 +39,10 @@ public class LoginController {
     @Path("/login/login")
     public void login(User user, String signup, String login) {
         if (login != null) {
-            if (user != null && !user.getEmail().trim().isEmpty() && !user.getPassword().trim().isEmpty()) {
-                UserDAO userDAO = new UserDAO();
-                User userLogged = userDAO.findUserByEmail(user.getEmail());
-                if (userLogged != null) {
+            if (user != null && !user.getEmail().trim().isEmpty() && !user.getPassword().trim().isEmpty()) {                
+            	UserDAO userDAO = new UserDAO();                
+                User userLogged = userDAO.findUserByEmail(user.getEmail());                
+                if (userLogged != null && userLogged.getPassword().equals(encrypt(user.getPassword()))) {
                     userSession.login(userLogged);
                     result.redirectTo(HomeController.class).main(user);
                 } else {

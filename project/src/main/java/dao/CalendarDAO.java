@@ -12,16 +12,16 @@ public class CalendarDAO extends HibernateGenericDAO<Calendar> {
 
     public Calendar findCalendarByName(String name) {
         EntityManager entityManager = factory.createEntityManager();
-        Query query = (Query) entityManager.createQuery("from Calendar c where c.name = ?");
-        query.setParameter(1, name);
+        Query query = (Query) entityManager.createQuery("from Calendar c where c.name = :name");
+        query.setParameter("name", name);
         return (Calendar) query.getSingleResult();
     }
 
     @SuppressWarnings("unchecked")
     public List<Calendar> findCalendarsByUser(User user) {
         EntityManager entityManager = factory.createEntityManager();
-        Query query = (Query) entityManager.createQuery("from Calendar c where c.owner = ?");
-        query.setParameter(1, user);
+        Query query = (Query) entityManager.createQuery("from Calendar c where c.owner = :owner");
+        query.setParameter("owner", user);
         return (List<Calendar>) query.getResultList();
     }
 }

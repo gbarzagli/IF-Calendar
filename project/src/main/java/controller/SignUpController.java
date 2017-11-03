@@ -10,19 +10,26 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import component.UserSession;
 import dao.UserDAO;
 import model.User;
 
 @Controller
 @Path("/signup")
 public class SignUpController {
-
+	
+	 @Inject
+	 private UserSession userSession;
+	
     @Inject
     private Result result;
 
-    @Path("/")
+    @Path("")
     public void signup() {
         // Method only to load jsp
+    	if (userSession.isLogged()) {
+            result.redirectTo(HomeController.class).index();
+        }
     }
 
     @Post("/insert")
@@ -42,6 +49,7 @@ public class SignUpController {
                     user.setEmail(user.getEmail());
                     user.setPassword(encrypt(user.getPassword()));
                     userDAO.insert(user);
+                    userSession.login(user);
                     result.redirectTo(HomeController.class).index();
                 }
             } else {

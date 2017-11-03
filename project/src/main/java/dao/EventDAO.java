@@ -12,16 +12,16 @@ public class EventDAO extends HibernateGenericDAO<Event> {
     
     public Event findEventByName(String name) {
         EntityManager entityManager = factory.createEntityManager();
-        Query query = (Query) entityManager.createQuery("from Event e where e.name = ?");
-        query.setParameter(1, name);
+        Query query = (Query) entityManager.createQuery("from Event e where e.name = :name");
+        query.setParameter("name", name);
         return (Event) query.getSingleResult();
     }
     
     @SuppressWarnings("unchecked")
     public List<Event> findEventsByCalendar(Calendar calendar) {
         EntityManager entityManager = factory.createEntityManager();
-        Query query = (Query) entityManager.createQuery("from Event e where e.calendar = ?");
-        query.setParameter(1, calendar);
+        Query query = (Query) entityManager.createQuery("from Event e where e.calendar = :calendar");
+        query.setParameter("calendar", calendar);
         return (List<Event>) query.getResultList();
     }
 }

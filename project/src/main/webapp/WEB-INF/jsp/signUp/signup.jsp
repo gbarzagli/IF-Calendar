@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="<c:url value="/css/signup.css"/>">
 </head>
 <body>
-	<form method="post" action="<c:url value='/signUp/insert'/>">
+	<form method="post" action="<c:url value='/signup/insert'/>">
 		<div class="signup-page-bg">
 	    	<div class="container">
 	    		<div class="row">
