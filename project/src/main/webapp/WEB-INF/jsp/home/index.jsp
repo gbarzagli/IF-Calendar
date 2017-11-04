@@ -5,8 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>IF Calendar</title>
-	
+	<title>IF Calendar</title>	
 	<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
 </head>

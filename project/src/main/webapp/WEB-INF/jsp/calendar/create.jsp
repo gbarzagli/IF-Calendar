@@ -4,15 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/main.css"/>">
 <title>IFCalendar</title>
 </head>
 <body>
-	<form action="<c:url value="/calendar/insert"/>" method="post">
-		<label for="name">Name: </label> </br>
-		<input type="text" name="name"/></br></br>
-		<label for="invitedUser">Invite user: </label></br>
-		<input type="text" name="invitedUser"/></br></br>
-		<input type="submit" value="Create"/>
-	</form>
+	<div class="container">
+      <form action="<c:url value="/calendar/insert"/>" method="post" class="main-container row">
+        <h2>CREATE SOMETHING</h2>
+        <div class="input-div">
+          <input type="text" name="name" id="name" required/>
+          <label for="name"><span>NAME</span></label>
+        </div>        
+        <input type="submit" value="CONFIRM"/>
+      </form>
+    </div>
 </body>
 </html>

@@ -4,15 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/main.css"/>">
 <title>IFCalendar</title>
 </head>
 <body>
-	<form action="" method="post">
-		<button onClick="createCalendar()">Create calendar</button>
-		<button onClick="listCalendar()">Calendars I can see</button>
-		<button onClick="logout()">Logout</button>
-	</form>
-
+	<div class="container">
+			<form action="" method="post" class="main-container display-button-list">
+        <h2>MENU</h2>
+				<button onClick="createCalendar()">Create calendar</button>
+				<button onClick="listCalendar()">Calendars I can see</button>
+				<button onClick="logout()" class="logout-button">Logout</button>
+			</form>
+		</div>
 	<script src="<c:url value="/js/main.js"/>"></script>
 </body>
 </html>
