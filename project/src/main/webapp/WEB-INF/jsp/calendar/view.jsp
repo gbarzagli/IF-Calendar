@@ -4,20 +4,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/main.css"/>">
 <title>IFCalendar</title>
 </head>
 <body>
-	<h1>${calendar.name}</h1>
-	
-	<form action="" method="post">		
-		<button onClick="addEvent()">Add event</button>
-		<ul>
-			<c:forEach items="${eventList}" var="event">
-				<li> ${event.start} <a href="<c:url value="/event/${event.id}"/>">${event.name}</a> <button onclick="edit(${event.id})">Edit</button><button onclick="remove(${event.id})">Delete</button></li>
-			</c:forEach>
-		</ul>
-	</form>
-	
+	 <div class="container">
+      <div class="main-container row">
+        <h2>${calendar.name}</h2>
+      	<form action="" method="post">   
+          <button>Add participants</button>
+      		<button onClick="addEvent()">Add event</button>
+      		<ul class="ul-table">
+      		<c:forEach items="${eventList}" var="event">
+      				<li>
+                <div>
+                  ${event.start}
+                </div>
+                <div>
+                  <a href="<c:url value="/event/${event.id}"/>"> -  ${event.name}</a>
+                </div>
+                <div>
+                  <button onclick="edit(${event.id})">Edit</button>
+                  <button onclick="remove(${event.id})">Delete</button>
+                </div>
+              </li>
+      		</c:forEach>
+      		</ul>
+      	</form>
+      </div>
+    </div>	
 	<script src="<c:url value="/js/calendar.js"/>"></script>
 </body>
 </html>

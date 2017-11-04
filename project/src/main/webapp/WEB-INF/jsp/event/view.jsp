@@ -4,15 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/main.css"/>">
+<title>IFCalendar</title>
 </head>
 <body>
-    <h1>Event</h1>
-    <ul>
-        <li><c:out value="${ event.name }"/></li>
-        <li><c:out value="${ event.start }"/></li>
-        <li><c:out value="${ event.end }"/></li>
-        <li><c:out value="${ event.local }"/></li>
-    </ul>
+   <div class="container">
+      <div class="main-container row">
+        <h2>EVENTS</h2>
+        <ul class="ul-table">
+          <li>
+            <div><c:out value="${ event.name }"/></div>
+            <div><c:out value="${ event.start }"/></div>
+            <div><c:out value="${ event.end }"/></div>
+            <div><c:out value="${ event.local }"/></div>
+          </li>
+        </ul>
+      </div>
+    </div>
 </body>
 </html>

@@ -4,12 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/main.css"/>">
 <title>IFCalendar</title>
 </head>
 <body>
-	<h1>Calendars</h1>
-	<c:forEach items="${calendarList}" var="calendar">
-		<a href="<c:url value="/calendar/${calendar.id}"/>">${calendar.name}</a> </br>
-	</c:forEach>
+	<div class="container">
+
+      <div class="main-container row">
+        <h2>CALENDARS</h2>
+        <ul>
+          <li>
+            <c:forEach items="${calendarList}" var="calendar">
+              <a href="<c:url value="/calendar/${calendar.id}"/>">${calendar.name}</a><br>
+            </c:forEach>
+          </li>
+        </ul>
+      </div>
+    </div>
 </body>
 </html>
