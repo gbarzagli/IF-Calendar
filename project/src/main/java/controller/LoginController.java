@@ -47,6 +47,7 @@ public class LoginController {
                     result.redirectTo(HomeController.class).main(user);
                 } else {
                     result.include("validation", "Wrong login or password");
+                    result.redirectTo(LoginController.class).index();
                 }
             }
         } else if (signup != null) {

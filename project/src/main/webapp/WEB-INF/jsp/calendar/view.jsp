@@ -12,23 +12,27 @@
 	 <div class="container">
       <div class="main-container row">
         <h2>${calendar.name}</h2>
-      	<form action="" method="post">   
-          <button>Add participants</button>
-      		<button onClick="addEvent()">Add event</button>
+      	<form action="" method="post">
+      		<c:if test="${canWrite}">   
+	          	<button onClick="manageParticipants()">Manage participants</button>
+	      		<button onClick="addEvent()">Add event</button>
+      		</c:if>
       		<ul class="ul-table">
       		<c:forEach items="${eventList}" var="event">
-      				<li>
-                <div>
-                  ${event.start}
-                </div>
-                <div>
-                  <a href="<c:url value="/event/${event.id}"/>"> -  ${event.name}</a>
-                </div>
-                <div>
-                  <button onclick="edit(${event.id})">Edit</button>
-                  <button onclick="remove(${event.id})">Delete</button>
-                </div>
-              </li>
+	      		<li>
+	                <div>
+	                  ${event.start}
+	                </div>
+	                <div>
+	                  <a href="<c:url value="/event/${event.id}"/>"> -  ${event.name}</a>
+	                </div>
+	                <c:if test="${canWrite}"> 
+		                <div>
+		                  <button onclick="edit(${event.id})">Edit</button>
+		                  <button onclick="remove(${event.id})">Delete</button>
+		                </div>
+	                </c:if>
+	              </li>
       		</c:forEach>
       		</ul>
       	</form>

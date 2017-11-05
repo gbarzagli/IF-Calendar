@@ -38,7 +38,7 @@ public class EventController {
 		Calendar calendar = calendarDAO.findByKey(userSession.getCalendar().getId());
 		event.setCalendar(calendar);
 		eventDAO.insert(event);		
-		result.redirectTo(HomeController.class).index();
+		result.redirectTo(CalendarController.class).view(calendar);
 	}
 	
 	@Path("/{event.id}")
