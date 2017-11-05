@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 public class Permission {
     
@@ -11,6 +13,7 @@ public class Permission {
     private PermissionId id;
     
     @Column
+    @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean canWrite;
     
     public PermissionId getId() {
