@@ -1,8 +1,8 @@
 package controller;
 
-import javax.inject.Inject;
+import static utils.Utils.encrypt;
 
-import org.omg.CORBA.WrongTransaction;
+import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
@@ -10,7 +10,6 @@ import br.com.caelum.vraptor.Result;
 import component.UserSession;
 import dao.UserDAO;
 import model.User;
-import static utils.Utils.encrypt;
 
 @Controller
 public class LoginController {
@@ -29,7 +28,7 @@ public class LoginController {
     }
 
     @Path("/logout")
-    public void logout() throws WrongTransaction {
+    public void logout() {
         if (userSession.isLogged()) {
             userSession.logout();
         }

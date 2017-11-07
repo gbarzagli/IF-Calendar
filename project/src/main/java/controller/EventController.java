@@ -2,8 +2,6 @@ package controller;
 
 import javax.inject.Inject;
 
-import org.omg.CORBA.WrongTransaction;
-
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
@@ -32,7 +30,7 @@ public class EventController {
 	}
 	
 	@Path("/insert")
-	public void insert(Event event) throws WrongTransaction {
+	public void insert(Event event) {
 		EventDAO eventDAO = (EventDAO) DAOFactory.getDAO(DAOConstants.EVENT_CLASS);
 		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
 		Calendar calendar = calendarDAO.findByKey(userSession.getCalendar().getId());

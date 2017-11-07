@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.omg.CORBA.WrongTransaction;
-
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
@@ -33,14 +31,14 @@ public class CalendarController {
 	private Result result;
 
 	@Path("/create")
-	public void create() throws WrongTransaction {
+	public void create() {
 		if (!userSession.isLogged()) {
 			result.redirectTo(HomeController.class).index();
 		}
 	}
 
 	@Path("/insert")
-	public void insert(String name, String invitedUser) throws WrongTransaction {
+	public void insert(String name, String invitedUser) {
 		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
 		Calendar calendar = new Calendar();
 		calendar.setName(name);
@@ -76,12 +74,12 @@ public class CalendarController {
 		calendar = calendarDAO.findByKey(calendar.getId());		
 		List<Event> eventList = eventDAO.findEventsByCalendar(calendar);
 		userSession.setCalendar(calendar);
-		boolean canWrite = calendar.getOwner().getId().equals(user.getId());
+		boolean canWrite = calendar.getOwner().equals(user);
 		
 		if (!canWrite) {
 			List<Permission> permissionList = calendar.getPermissions();
 			for (Permission permission : permissionList) {
-				if (permission.getId().getUser() == user) {
+				if (permission.getId().getUser().equals(user)) {
 					canWrite = permission.canWrite();
 					break;
 				}
@@ -127,15 +125,14 @@ public class CalendarController {
 			permissionList.add(permission);
 			calendar.setPermissions(permissionList);
 			calendarDAO.update(calendar);
-		} else {
-			// TODO create a method to inform user that the email is not valid
 		}
+		// TODO create a else block to inform user that the email is not valid
 
 		result.redirectTo(CalendarController.class).participants();
 	}
 
 	@Path("changePermission")
 	public void changePermission() {
-
+	    // TODO create change permission method
 	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,11 +23,13 @@
             <label for="place"><span>PLACE</span></label>
           </div>
           <div class="input-div">
-            <input type="date" name="event.start" value="${event.start}"/>
+            <fmt:formatDate pattern="yyyy-MM-dd" value = "${event.start}" var="startDate" />
+            <input type="date" name="event.start" value="${startDate}"/>
             <label for="startDate"><span>STARTING DATE</span></label>
           </div>
           <div class="input-div">
-            <input type="date" name="event.end" value="${event.end}"/>
+            <fmt:formatDate pattern="yyyy-MM-dd" value = "${event.end}" var="endDate" />
+            <input type="date" name="event.end" value="${endDate}"/>
             <label for="endDate"><span>ENDING DATE</span></label>
           </div>
       		<input type="submit" value="SAVE"/>
