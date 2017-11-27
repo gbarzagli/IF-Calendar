@@ -28,7 +28,7 @@ public class HomeController {
 	 * Method responsible to the first page of this app.
 	 */
 	@Path("/")
-	public void index() {
+	public void index() {        
 		if (!userSession.isLogged()) {
 			result.redirectTo(LoginController.class).index();
 		} else {
