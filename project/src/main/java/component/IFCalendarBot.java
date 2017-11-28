@@ -12,12 +12,10 @@ public class IFCalendarBot extends TelegramLongPollingBot {
 	    if (update.hasMessage() && update.getMessage().hasText()) {
 	        SendMessage message = new SendMessage() // Create a SendMessage object with mandatory fields
 	                .setChatId(update.getMessage().getChatId())
-	                .setText("Aqui aparecer„o os eventos");
+	                .setText("Aqui aparecer√£o os eventos");
 	        try {
 	            execute(message); // Call method to send the message
-	        } catch (TelegramApiException e) {
-	            e.printStackTrace();
-	        }
+	        } catch (TelegramApiException e) {}
 	    }
 	}
 
