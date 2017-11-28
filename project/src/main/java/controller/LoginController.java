@@ -16,7 +16,7 @@ public class LoginController {
 
     @Inject
     private UserSession userSession;
-
+    
     @Inject
     private Result result;
 
