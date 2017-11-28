@@ -19,9 +19,7 @@ public class StartBotComponent {
 
         try {
             botsApi.registerBot(new IFCalendarBot());
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }
+        } catch (TelegramApiException e) {}
         System.out.println("[TelegramBot] IFCalendar Telegram Bot started!");
 	}
 }
