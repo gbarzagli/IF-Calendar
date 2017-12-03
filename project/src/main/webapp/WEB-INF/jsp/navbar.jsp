@@ -17,6 +17,7 @@
         <li class="active"><a href="#">HOME</a></li>
         <li><a data-toggle="modal" data-target="#manageCalendars" href="#">MANAGE CALENDARS</a></li>
       </ul>
+      <a class="pull-right logout" href="#">LOGOUT</a>
     </div>
   </div>
 </nav>

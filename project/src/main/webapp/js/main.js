@@ -9,3 +9,9 @@ function createCalendar(){
 function listCalendar(){
 	document.forms[0].action = "/if-calendar/calendar/list"
 }
+
+function changeCalendar(id) {
+	var form = document.calendarChooser;
+	form.action = "/if-calendar/calendar/" + id;
+	form.submit();
+}

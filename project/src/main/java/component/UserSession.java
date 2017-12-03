@@ -15,9 +15,17 @@ public class UserSession implements Serializable {
     private User user;
     private Calendar calendar;
     private Email email;
+    private int day;
     private int month;
     private int year;
     
+    public int getDay() {
+        return day;
+    }
+    
+    public void setDay(int day) {
+        this.day = day;
+    }
 	public void login(User user) {
 		this.user = user;
 	}

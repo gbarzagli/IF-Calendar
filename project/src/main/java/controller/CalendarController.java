@@ -71,7 +71,12 @@ public class CalendarController {
 		EventDAO eventDAO = (EventDAO) DAOFactory.getDAO(DAOConstants.EVENT_CLASS);
 		
 		User user = userDAO.findByKey(userSession.getUser().getId());		
-		calendar = calendarDAO.findByKey(calendar.getId());		
+		calendar = calendarDAO.findByKey(calendar.getId());
+		
+		int day = userSession.getDay();
+		int month = userSession.getMonth();
+		int year = userSession.getYear();
+		
 		List<Event> eventList = eventDAO.findEventsByCalendar(calendar);
 		userSession.setCalendar(calendar);
 		boolean canWrite = calendar.getOwner().equals(user);
@@ -150,7 +155,7 @@ public class CalendarController {
         userSession.setMonth(newMonth);
         userSession.setYear(newYear);
         
-        result.redirectTo(HomeController.class).main(userSession.getUser(), newMonth, newYear);
+        result.redirectTo(CalendarController.class).view(userSession.getCalendar());
     }
 
 	@Path("changePermission")

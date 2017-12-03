@@ -22,7 +22,7 @@
 		        </div>
 	        </c:forEach>
         </c:if>
-        <c:if test="${ empty eventList }">
+        <c:if test="${ empty eventList and canWrite }">
 	        <form action="<c:url value="/event/insert" />">
 	            <div class="info-event">
 		            <div>

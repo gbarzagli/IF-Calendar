@@ -77,6 +77,6 @@ public class EventController {
 	    EventDAO eventDAO = (EventDAO) DAOFactory.getDAO(DAOConstants.EVENT_CLASS);
 	    event = eventDAO.findByKey(event.getId());
 	    eventDAO.remove(event.getId());
-	    result.redirectTo(CalendarController.class).view(event.getCalendar());
+	    result.redirectTo(HomeController.class).main();
 	}
 }

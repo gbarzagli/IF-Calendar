@@ -52,10 +52,11 @@ public class LoginController {
                     int monthInt = month.getValue();
                     int year = localDate.getYear();
                     
+                    userSession.setDay(0);
                     userSession.setMonth(monthInt);
                     userSession.setYear(year);
                     
-                    result.redirectTo(HomeController.class).main(user, monthInt, year);
+                    result.redirectTo(HomeController.class).main();
                 } else {
                     result.include("validation", "Wrong login or password");
                     result.redirectTo(LoginController.class).index();
