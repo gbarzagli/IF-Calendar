@@ -26,6 +26,17 @@ public class Event extends EntityObject {
     @Column
     private Date end;
     
+    @Column
+    private boolean sent;
+    
+    public boolean isSent() {
+		return sent;
+	}
+
+	public void setSent(boolean sent) {
+		this.sent = sent;
+	}
+
     @ManyToOne
     @JoinColumn(name = "calendar_id", referencedColumnName = "id")
     private Calendar calendar;

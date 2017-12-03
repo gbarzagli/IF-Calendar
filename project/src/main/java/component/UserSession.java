@@ -6,6 +6,7 @@ import javax.enterprise.context.SessionScoped;
 
 import model.Calendar;
 import model.User;
+import utils.Email;
 
 @SessionScoped
 public class UserSession implements Serializable {
@@ -13,6 +14,7 @@ public class UserSession implements Serializable {
     
     private User user;
     private Calendar calendar;
+    private Email email;
     private int month;
     private int year;
     
@@ -39,6 +41,14 @@ public class UserSession implements Serializable {
 	public Calendar getCalendar(){
 		return calendar;
 	}
+
+	public Email getEmail() {
+		return email;
+	}
+
+	public void setEmail(Email email) {
+		this.email = email;
+	}	
 	
 	public int getMonth() {
         return month;
@@ -55,4 +65,5 @@ public class UserSession implements Serializable {
 	public void setYear(int year) {
         this.year = year;
     }
+
 }

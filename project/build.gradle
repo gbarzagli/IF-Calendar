@@ -47,6 +47,6 @@ dependencies {
   compile 'mysql:mysql-connector-java:5.1.13'
   compile 'commons-validator:commons-validator:1.6'
   compile 'commons-codec:commons-codec:1.10'
+  compile "org.telegram:telegrambots:3.5"
   compile 'org.apache.commons:commons-email:1.5'
-  
 }

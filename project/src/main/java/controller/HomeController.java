@@ -67,6 +67,11 @@ public class HomeController {
      */
     @Path("/")
     public void index() {        
+        if(userSession.getEmail() == null){
+            userSession.setEmail(new utils.Email());
+            userSession.getEmail().start();
+        }
+        
         if (!userSession.isLogged()) {
             result.redirectTo(LoginController.class).index();
         } else {
