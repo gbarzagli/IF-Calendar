@@ -27,13 +27,16 @@ public class Email extends Thread{
 				if(listEvents != null && listEvents.size() > 0){
 					for (Event event : listEvents) {
 						if(!event.isSent()){
+							event.setSent(true);
+							eventDAO.update(event);
 							long timeToStart = event.getStart().getTime() - new Date().getTime();
-							if(TimeUnit.MILLISECONDS.toMinutes(timeToStart) < 60){
+							if(TimeUnit.MILLISECONDS.toMinutes(timeToStart) < 60 && TimeUnit.MILLISECONDS.toMinutes(timeToStart) > 0){
+								send(event.getCalendar().getOwner().getEmail(), event.getName(),  String.valueOf(TimeUnit.MILLISECONDS.toMinutes(timeToStart)));								
 								List<Permission> permissionList = event.getCalendar().getPermissions();
 								for (Permission permission : permissionList) {
 									PermissionId permissionId = permission.getId();
 									User user = permissionId.getUser();
-									send(user.getEmail());
+									send(user.getEmail(), event.getName(), String.valueOf(TimeUnit.MILLISECONDS.toMinutes(timeToStart)));									
 								}
 							}
 						}
@@ -48,7 +51,7 @@ public class Email extends Thread{
 		}
 	}
 	
-	private void send(String emailSend){
+	private void send(String emailSend, String event, String minutes){
 		SimpleEmail email = new SimpleEmail();
         email.setHostName("smtp.googlemail.com");
         email.setSmtpPort(465);
@@ -56,8 +59,8 @@ public class Email extends Thread{
         email.setSSLOnConnect(true);
         try {
             email.setFrom("ifspcalendar@gmail.com");
-            email.setSubject("AAAAAAAAAAAA");
-            email.setMsg("bbbbbbbbbbbbb");
+            email.setSubject("Event is about to start!");
+            email.setMsg("Your event \"" + event + "\" is about to start in: " + minutes + " minutes!");
             email.addTo(emailSend);
             email.send();
         } catch (EmailException e) {

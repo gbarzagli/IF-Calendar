@@ -10,7 +10,7 @@ import model.User;
 
 @Controller
 public class HomeController {
-
+	
 	@Inject
 	private UserSession userSession;
 
@@ -29,7 +29,11 @@ public class HomeController {
 	 */
 	@Path("/")
 	public void index() {  
-		new utils.Email().start();
+		
+		if(userSession.getEmail() == null){
+			userSession.setEmail(new utils.Email());
+			userSession.getEmail().start();
+		}
 		
 		if (!userSession.isLogged()) {
 			result.redirectTo(LoginController.class).index();
