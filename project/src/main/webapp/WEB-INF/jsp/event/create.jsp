@@ -22,12 +22,12 @@
             <label for="place"><span>PLACE</span></label>
           </div>
           <div class="input-div">
-            <input type="date" name="event.start"/>
-            <label for="startDate"><span>STARTING DATE</span></label>
+            <input type="time" name="startTime"/>
+            <label for="startDate"><span>STARTING TIME</span></label>
           </div>
           <div class="input-div">
-            <input type="date" name="event.end"/>
-            <label for="endDate"><span>ENDING DATE</span></label>
+            <input type="time" name="endTime"/>
+            <label for="endDate"><span>ENDING TIME</span></label>
           </div>
       		<input type="submit" value="CREATE"/>
       	</form>

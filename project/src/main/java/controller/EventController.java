@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
@@ -30,11 +32,34 @@ public class EventController {
 	}
 	
 	@Path("/insert")
-	public void insert(Event event) {
+	public void insert(Event event, String startTime, String endTime) {
 		EventDAO eventDAO = (EventDAO) DAOFactory.getDAO(DAOConstants.EVENT_CLASS);
 		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
 		Calendar calendar = calendarDAO.findByKey(userSession.getCalendar().getId());
 		event.setCalendar(calendar);
+		event.setSent(false);
+		userSession.setYear(2017);
+		userSession.setMonth(12);
+		userSession.setDay(3);
+		
+		java.util.Calendar startDate = java.util.Calendar.getInstance();
+		java.util.Calendar endDate = java.util.Calendar.getInstance();
+		
+		String[] composedStartTime = startTime.split(":");
+		String[] composedEndTime = startTime.split(":");
+		
+		int startingHour = Integer.parseInt(composedStartTime[0]);
+		int startingMinutes = Integer.parseInt(composedStartTime[1]);
+		
+		int endingHour = Integer.parseInt(composedEndTime[0]);
+		int endingMinutes = Integer.parseInt(composedEndTime[1]);
+		
+		startDate.set(userSession.getYear(), userSession.getMonth(), userSession.getDay(), startingHour, startingMinutes);
+		endDate.set(userSession.getYear(), userSession.getMonth(), userSession.getDay(), endingHour, endingMinutes);
+		
+		event.setStart(startDate.getTime());
+		event.setEnd(endDate.getTime());
+		
 		eventDAO.insert(event);		
 		result.redirectTo(CalendarController.class).view(calendar);
 	}
