@@ -130,6 +130,28 @@ public class CalendarController {
 
 		result.redirectTo(CalendarController.class).participants();
 	}
+	
+	@Path("/changeMonth/{month}")
+    public void changeMonth(int month) {
+        int currentMonth = userSession.getMonth();
+        int currentYear = userSession.getYear();
+        
+        int newYear = currentYear;
+        int newMonth = currentMonth + month;
+        
+        if (newMonth < 1) {
+            newMonth = 12;
+            newYear--;
+        } else if (newMonth > 12) {
+            newMonth = 1;
+            newYear++;
+        }
+        
+        userSession.setMonth(newMonth);
+        userSession.setYear(newYear);
+        
+        result.redirectTo(HomeController.class).main(userSession.getUser(), newMonth, newYear);
+    }
 
 	@Path("changePermission")
 	public void changePermission() {

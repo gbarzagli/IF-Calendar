@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -28,4 +29,12 @@ public class EventDAO extends HibernateGenericDAO<Event> {
         query.setParameter("calendar", calendar);
         return (List<Event>) query.getResultList();
     }
+    
+    public List<Event> findEventsByCalendarAndDate(Calendar calendar, Date date) {
+        EntityManager entityManager = factory.createEntityManager();
+        Query query = (Query) entityManager.createQuery("from Event e where e.calendar = :calendar");
+        query.setParameter("calendar", calendar);
+        return (List<Event>) query.getResultList();
+    }
+    
 }

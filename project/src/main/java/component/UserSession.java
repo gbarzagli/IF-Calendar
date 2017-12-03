@@ -13,6 +13,8 @@ public class UserSession implements Serializable {
     
     private User user;
     private Calendar calendar;
+    private int month;
+    private int year;
     
 	public void login(User user) {
 		this.user = user;
@@ -37,4 +39,20 @@ public class UserSession implements Serializable {
 	public Calendar getCalendar(){
 		return calendar;
 	}
+	
+	public int getMonth() {
+        return month;
+    }
+	
+	public void setMonth(int month) {
+        this.month = month;
+    }
+	
+	public int getYear() {
+        return year;
+    }
+	
+	public void setYear(int year) {
+        this.year = year;
+    }
 }

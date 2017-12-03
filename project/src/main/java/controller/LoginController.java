@@ -2,6 +2,9 @@ package controller;
 
 import static utils.Utils.encrypt;
 
+import java.time.LocalDate;
+import java.time.Month;
+
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
@@ -43,7 +46,16 @@ public class LoginController {
                 User userLogged = userDAO.findUserByEmail(user.getEmail());                
                 if (userLogged != null && userLogged.getPassword().equals(encrypt(user.getPassword()))) {
                     userSession.login(userLogged);
-                    result.redirectTo(HomeController.class).main(user);
+                    
+                    LocalDate localDate = LocalDate.now();
+                    Month month = localDate.getMonth();
+                    int monthInt = month.getValue();
+                    int year = localDate.getYear();
+                    
+                    userSession.setMonth(monthInt);
+                    userSession.setYear(year);
+                    
+                    result.redirectTo(HomeController.class).main(user, monthInt, year);
                 } else {
                     result.include("validation", "Wrong login or password");
                     result.redirectTo(LoginController.class).index();

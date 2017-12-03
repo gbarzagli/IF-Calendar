@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -23,7 +25,7 @@ public class Event extends EntityObject {
 
     @Column
     private Date end;
-
+    
     @ManyToOne
     @JoinColumn(name = "calendar_id", referencedColumnName = "id")
     private Calendar calendar;
@@ -67,7 +69,37 @@ public class Event extends EntityObject {
     public void setCalendar(Calendar calendar) {
         this.calendar = calendar;
     }
-
+    
+    public String getEventTime() {
+        LocalDateTime localDateTimeStart = LocalDateTime.ofInstant(start.toInstant(), ZoneId.systemDefault());
+        LocalDateTime localDateTimeEnd = LocalDateTime.ofInstant(end.toInstant(), ZoneId.systemDefault());
+        
+        int startHour = localDateTimeStart.getHour();
+        int endHour = localDateTimeEnd.getHour();
+        
+        String startStr;
+        if (startHour < 10) {
+            startStr = "0" + Integer.toString(startHour) + ":00";
+        } else {
+            startStr = Integer.toString(startHour) + ":00";
+        }
+        
+        String endStr;
+        if (endHour < 10) {
+            endStr = "0" + Integer.toString(endHour) + ":00";
+        } else {
+            endStr = Integer.toString(endHour) + ":00";
+        }
+        
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(startStr);
+        stringBuffer.append(" - ");
+        stringBuffer.append(endStr);
+        
+        String eventTime = stringBuffer.toString();
+        return eventTime;
+    }
+    
     @Override
     public Long getId() {
         return id;
