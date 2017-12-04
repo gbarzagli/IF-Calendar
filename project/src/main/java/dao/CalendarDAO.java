@@ -25,13 +25,8 @@ public class CalendarDAO extends HibernateGenericDAO<Calendar> {
         List<Calendar> calendars = new ArrayList<>();
         
         Query queryOwner = (Query) entityManager.createQuery("from Calendar c where c.owner = :owner");
-        Query queryParticipant = (Query) entityManager.createQuery("select c from Calendar c, Permission p where c.id = p.id.calendar.id and p.id.user = :user");
-        
         queryOwner.setParameter("owner", user);
-        queryParticipant.setParameter("user", user);
-        
         calendars.addAll((List<Calendar>) queryOwner.getResultList());
-        calendars.addAll((List<Calendar>) queryParticipant.getResultList());
         
         return calendars;
     }

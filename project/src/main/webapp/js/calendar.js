@@ -15,7 +15,12 @@ function manageParticipants(){
 }
 
 function changePermissions(){
-	document.forms[0].action = "/if-calendar/calendar/changePermission";
+	var elements = document.getElementsByClassName("check");
+	var values = "";
+	[].forEach.call(elements, function (element) {
+		values += element.id + "," + element.checked + ",";
+	});
+	document.forms[0].action = "/if-calendar/calendar/changePermission/" + values;
 }
 
 function addUser(){
