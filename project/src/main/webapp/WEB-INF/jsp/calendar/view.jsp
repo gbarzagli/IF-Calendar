@@ -14,8 +14,20 @@
 	</head>
 	
 	<body>
+	    <%@ include file="../navbar.jsp" %>
 	    <div class="container calendar-container">
 	        <div class="row calendar-row">
+	            <div class="header-main-calendar">
+	                <div class="col-md-6 col-sm-12 col-xs-12 pull-right div-p">&nbsp;</div>
+	                <c:if test="${ canWrite }">
+					    <button class="col-md-6 col-sm-12 col-xs-12 pull-right btn-p">
+					       Manage participants
+					    </button>
+				    </c:if>
+				    <c:if test="${ !canWrite }">
+                        <div class="col-md-6 col-sm-12 col-xs-12 pull-right div-p">&nbsp;</div>
+                    </c:if>
+				</div>
 	            <%@ include file="calendar_days.jsp" %>
 	            <c:if test="${ showEvents eq true }">
 	               <%@ include file="event_panel.jsp" %>

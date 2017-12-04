@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -10,14 +11,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">IF Calendar</a>
+      <a class="navbar-brand">IF Calendar</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">HOME</a></li>
-        <li><a data-toggle="modal" data-target="#manageCalendars" href="#">MANAGE CALENDARS</a></li>
+        <c:if test="${ not empty calendarName }">
+	        <li class="active"><a>${ calendarName }</a></li>
+	        <li><a href="<c:url value="/calendar/list" />">MANAGE CALENDARS</a></li>
+        </c:if>
+        <c:if test="${ empty calendarName }">
+            <li class="active"><a href="<c:url value="/calendar/list" />">MANAGE CALENDARS</a></li>
+        </c:if>
       </ul>
-      <a class="pull-right logout" href="#">LOGOUT</a>
+      <a class="pull-right logout" href="<c:url value="/logout" />">LOGOUT</a>
     </div>
   </div>
 </nav>

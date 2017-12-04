@@ -6,7 +6,10 @@
         <a href="<c:url value="/calendar/changeMonth/-1"/>" class="col-md-4 col-xs-4 col-sm-4">
             <img src="<c:url value="/imgs/move-to-forward.png"/>" width="22" height="22" />
         </a>
-        <span class="month-calendar col-md-4 col-xs-4 col-sm-4">${ month }</span>
+        <div class="month-calendar col-md-4 col-xs-4 col-sm-4">
+            <p>${ year }</p>
+            <p>${ month }</p>
+        </div>
         <a href="<c:url value="/calendar/changeMonth/1"/>" class="col-md-4 col-xs-4 col-sm-4">
             <img src="<c:url value="/imgs/move-to-next.png"/>" width="22" height="22" />
         </a>

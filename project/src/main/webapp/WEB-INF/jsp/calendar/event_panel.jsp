@@ -10,16 +10,20 @@
 	                <span class="event-hour">${ event.eventTime }</span>
 	            </div>
 	            <div class="event-description">${ event.local }</div>
-	            <div class="action-buttons">
-	                <a href="<c:url value="/event/delete/${event.id}" />">
-	                    <img width="20" height="20" src="<c:url value="/imgs/trash-can.png"/>" />
-	                </a>
-	                <a href="<c:url value="/event/edit/${event.id}" />">
-	                    <img width="20" height="20" src="<c:url value="/imgs/pencil-edit-button.png"/>" />
-	                </a>
-	            </div>
+	            <c:if test="${ canWrite }">
+		            <div class="action-buttons">
+		                <a href="<c:url value="/event/delete/${event.id}" />">
+		                    <img width="20" height="20" src="<c:url value="/imgs/trash-can.png"/>" />
+		                </a>
+		                <a href="<c:url value="/event/edit/${event.id}" />">
+		                    <img width="20" height="20" src="<c:url value="/imgs/pencil-edit-button.png"/>" />
+		                </a>
+		            </div>
+	            </c:if>
 	        </div>
         </c:forEach>
     </div>
-    <button type="button" class="add-event" onclick="insertEvent()">+</button>
+    <c:if test="${ canWrite }">
+        <button type="button" class="add-event" onclick="insertEvent()">+</button>
+    </c:if>
 </div>

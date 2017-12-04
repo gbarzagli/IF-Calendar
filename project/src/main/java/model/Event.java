@@ -87,25 +87,41 @@ public class Event extends EntityObject {
         
         int startHour = localDateTimeStart.getHour();
         int endHour = localDateTimeEnd.getHour();
+        int startMinute = localDateTimeStart.getMinute();
+        int endMinute = localDateTimeEnd.getMinute();
         
-        String startStr;
+        String startHourStr;
         if (startHour < 10) {
-            startStr = "0" + Integer.toString(startHour) + ":00";
+            startHourStr = "0" + Integer.toString(startHour);
         } else {
-            startStr = Integer.toString(startHour) + ":00";
+            startHourStr = Integer.toString(startHour);
         }
         
-        String endStr;
-        if (endHour < 10) {
-            endStr = "0" + Integer.toString(endHour) + ":00";
+        String startMinStr;
+        if (startMinute < 10) {
+            startMinStr = "0" + Integer.toString(startMinute);
         } else {
-            endStr = Integer.toString(endHour) + ":00";
+            startMinStr = Integer.toString(startMinute);
+        }
+        
+        String endHourStr;
+        if (endHour < 10) {
+            endHourStr = "0" + Integer.toString(endHour);
+        } else {
+            endHourStr = Integer.toString(endHour);
+        }
+        
+        String endMinStr;
+        if (endMinute < 10) {
+            endMinStr = "0" + Integer.toString(endMinute);
+        } else {
+            endMinStr = Integer.toString(endMinute);
         }
         
         StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(startStr);
+        stringBuffer.append(startHourStr + ":" + startMinStr);
         stringBuffer.append(" - ");
-        stringBuffer.append(endStr);
+        stringBuffer.append(endHourStr + ":" + endMinStr);
         
         String eventTime = stringBuffer.toString();
         return eventTime;

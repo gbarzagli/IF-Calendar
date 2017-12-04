@@ -36,7 +36,7 @@ public class HomeController {
         if (!userSession.isLogged()) {
             result.redirectTo(LoginController.class).index();
         } else {
-            result.redirectTo(HomeController.class).main();
+            result.redirectTo(CalendarController.class).list();
         }
     }
 

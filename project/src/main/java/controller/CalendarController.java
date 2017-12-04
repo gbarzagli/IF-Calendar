@@ -42,7 +42,12 @@ public class CalendarController {
 	}
 
 	@Path("/insert")
-	public void insert(String name, String invitedUser) {
+	public void insert(String name) {
+	    if (name == null || name.trim().isEmpty()) {
+	        result.include("message", "You can not create a calendar without name!");
+	        result.redirectTo(CalendarController.class).list();
+	    }
+	    
 		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
 		Calendar calendar = new Calendar();
 		calendar.setName(name);
@@ -56,16 +61,18 @@ public class CalendarController {
 	@Path("/list")
 	public void list() {
 		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
-		List<Calendar> calendarList = calendarDAO.findCalendarsByUser(userSession.getUser());
+		List<Calendar> myCalendars = calendarDAO.findCalendarsByUser(userSession.getUser());
 		List<Permission> permissionList = userSession.getUser().getPermissions();
-
+		
+		List<Calendar> otherCalendars = new ArrayList<>();
 		if (permissionList != null) {
 			for (Permission permission : permissionList) {
-				calendarList.add(permission.getId().getCalendar());
+			    otherCalendars.add(permission.getId().getCalendar());
 			}
 		}
 
-		result.include("calendarList", calendarList);
+		result.include("myCalendars", myCalendars);
+		result.include("otherCalendars", otherCalendars);
 	}
 
 	@Path("/{calendar.id}")
@@ -105,6 +112,8 @@ public class CalendarController {
 		
 		result.include("canWrite", canWrite);
 		result.include("month", monthName);
+		result.include("year", year);
+		result.include("calendarName", calendar.getName());
 		result.include("calendar", monthDays);
 		result.include("eventList", eventList);
 		result.include("selectedDay", day);
@@ -159,7 +168,6 @@ public class CalendarController {
         
         int newYear = currentYear;
         int newMonth = currentMonth + month;
-        System.out.println("------------------   ANTES ERA = " + newMonth);
         
         if (newMonth < 1) {
             newMonth = 12;
@@ -168,7 +176,6 @@ public class CalendarController {
             newMonth = 1;
             newYear++;
         }
-        System.out.println("------------------   MUDOU PRA = " + newMonth);
         
         userSession.setMonth(newMonth);
         userSession.setYear(newYear);

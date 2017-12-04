@@ -97,6 +97,20 @@ select > option{
   border-radius: 30px;
   border: 0;
 }
+
+.div-p{
+  display: block;
+  width: 30%;
+  top: -10px;
+  padding: 10px 10px;
+  background-color: transparent;
+  outline: none;
+  font-weight: 300;
+  font-size: 1.3rem;
+  border-radius: 30px;
+  border: 0;
+}
+
 .add-participant-div > button{
   padding: 10px 10px;
   width: auto;
@@ -156,7 +170,10 @@ select > option{
   text-align: center;
   margin: 0;
   font-weight: bold;
-  line-height: 11vh;
+}
+
+.month-calendar > p {
+  margin: 0;
 }
 
 .calendar-header{
@@ -467,6 +484,7 @@ nav{
 }
 
 .manage-calendars-row{
+	display: flex;
   border-bottom: 90px;
 }
 
