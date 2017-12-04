@@ -300,7 +300,7 @@ select > option{
 
 .add-event{
   background-color: #fff;
-  color: #45c1bb;
+  color: #45c1bb !important;
   font-weight: 700;
   font-size: 30px;
   box-shadow: 1px 3px 10px #38918c;
@@ -538,4 +538,20 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.selected-day {
+  background-color: #54e1da;
+  border-radius: 100%;
+  color: #fff;
+  width: 30px;
+  border: 1px solid #53e0d9;
+  box-shadow: 1px 3px 15px #c9c9c9;
+  height: 30px;
+  font-size: 12px;
+  padding: 7px;
+  font-weight: bold;
+  transition: box-shadow 0.5s, background-color 0.5s, border-color 0.5s, transform 2s;
+  transition: font-size 0.15s, font-weight 0.5s, color 0.1s, transform 2s;
+  margin: 0 auto;
 }

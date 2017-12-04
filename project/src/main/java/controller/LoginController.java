@@ -49,10 +49,12 @@ public class LoginController {
                     
                     LocalDate localDate = LocalDate.now();
                     Month month = localDate.getMonth();
+                    
+                    int day = localDate.getDayOfMonth();
                     int monthInt = month.getValue();
                     int year = localDate.getYear();
-                    
-                    userSession.setDay(0);
+
+                    userSession.setDay(day);
                     userSession.setMonth(monthInt);
                     userSession.setYear(year);
                     

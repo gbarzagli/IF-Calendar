@@ -43,15 +43,4 @@ public class Utils {
 	    return days;
 	}
 	
-//	public static void main(String[] args) {
-//        String[][] days =  getMonthDays(Month.NOVEMBER.getValue(), 2017);
-//        
-//        for(int i = 0; i < 6; i++) {
-//            for (int j = 0; j < 7; j++) {
-//                System.out.print("| " + days[i][j] + " |");
-//            }
-//            System.out.println();
-//        }
-//    }
-	
 }

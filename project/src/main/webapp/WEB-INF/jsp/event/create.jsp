@@ -14,20 +14,20 @@
         <h2>CREATE EVENT</h2>
         <form action="<c:url value="/event/insert"/>" method="post">
           <div class="input-div">
-            <input type="text" name="event.name" required/>
             <label for="name"><span>NAME</span></label>
+            <input type="text" name="event.name" required/>
           </div>
           <div class="input-div">
+            <label for="description"><span>DESCRIPTION</span></label>
             <input type="text" name="event.local" required/>
-            <label for="place"><span>PLACE</span></label>
           </div>
           <div class="input-div">
+            <label for="startTime"><span>STARTING TIME</span></label>
             <input type="time" name="startTime"/>
-            <label for="startDate"><span>STARTING TIME</span></label>
           </div>
           <div class="input-div">
+            <label for="endTime"><span>ENDING TIME</span></label>
             <input type="time" name="endTime"/>
-            <label for="endDate"><span>ENDING TIME</span></label>
           </div>
       		<input type="submit" value="CREATE"/>
       	</form>

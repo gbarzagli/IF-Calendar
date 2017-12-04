@@ -1,43 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
-<link rel="stylesheet" href="<c:url value="/css/main.css"/>">
-<title>IFCalendar</title>
-</head>
-<body>
-	 <div class="container">
-      <div class="main-container row">
-        <h2>${calendar.name}</h2>
-      	<form action="" method="post">
-      		<c:if test="${canWrite}">   
-	          	<button onClick="manageParticipants()">Manage participants</button>
-	      		<button onClick="addEvent()">Add event</button>
-      		</c:if>
-      		<ul class="ul-table">
-      		<c:forEach items="${eventList}" var="event">
-	      		<li>
-	                <div>
-	                  ${event.start}
-	                </div>
-	                <div>
-	                  <a href="<c:url value="/event/${event.id}"/>"> -  ${event.name}</a>
-	                </div>
-	                <c:if test="${canWrite}"> 
-		                <div>
-		                  <button onclick="edit(${event.id})">Edit</button>
-		                  <button onclick="remove(${event.id})">Delete</button>
-		                </div>
-	                </c:if>
-	              </li>
-      		</c:forEach>
-      		</ul>
-      	</form>
-      </div>
-    </div>	
-	<script src="<c:url value="/js/calendar.js"/>"></script>
-</body>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
+	    <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
+	    <link href="http://fonts.googleapis.com/css?family=Roboto:400,100,‌​100italic,300,300ita‌​lic,400italic,500,50‌​0italic,700,700itali‌​c,900italic,900" rel="stylesheet" type="text/css">
+	    
+	    <title>IFCalendar</title>
+	</head>
+	
+	<body>
+	    <div class="container calendar-container">
+	        <div class="row calendar-row">
+	            <%@ include file="calendar_days.jsp" %>
+	            <c:if test="${ showEvents eq true }">
+	               <%@ include file="event_panel.jsp" %>
+	            </c:if>
+	        </div>
+	    </div>
+	
+	    <script src="<c:url value="/js/jquery-3.2.1.min.js"/>"></script>
+	    <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+	    <script src="<c:url value="/js/calendar.js"/>"></script>
+	</body>
 </html>

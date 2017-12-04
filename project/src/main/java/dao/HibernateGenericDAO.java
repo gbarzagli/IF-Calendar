@@ -13,18 +13,19 @@ import javax.persistence.Query;
  * @author Gabriel Barzagli
  */
 public abstract class HibernateGenericDAO<T> implements GenericDAO<T> {
-
+    
+    protected EntityManager entityManager;
     protected final EntityManagerFactory factory;
     protected Class<T> classObject;
 
     protected HibernateGenericDAO(Class<T> clazz) {
         factory = Persistence.createEntityManagerFactory("calendar");
+        entityManager = factory.createEntityManager();
         classObject = clazz;
     }
 
     @Override
     public void insert(T object) {
-        EntityManager entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
         entityManager.persist(object);
         entityManager.getTransaction().commit();
@@ -32,7 +33,6 @@ public abstract class HibernateGenericDAO<T> implements GenericDAO<T> {
 
     @Override
     public void update(T object) {
-        EntityManager entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
         entityManager.merge(object);
         entityManager.getTransaction().commit();
@@ -41,19 +41,16 @@ public abstract class HibernateGenericDAO<T> implements GenericDAO<T> {
     @Override
     @SuppressWarnings("unchecked")
     public List<T> all() {
-        EntityManager entityManager = factory.createEntityManager();
         Query query = (Query) entityManager.createQuery("from " +  classObject.getSimpleName());
         return (List<T>) query.getResultList();
     }
 
     @Override
     public T findByKey(Long id) {
-        EntityManager entityManager = factory.createEntityManager();
         return entityManager.find(classObject, id);
     }
 
     public void remove(Long id) {
-        EntityManager entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
         T object = entityManager.find(classObject, id);
         entityManager.remove(object);

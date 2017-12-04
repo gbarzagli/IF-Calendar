@@ -3,7 +3,6 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import model.Calendar;
@@ -16,7 +15,6 @@ public class CalendarDAO extends HibernateGenericDAO<Calendar> {
     }
 
     public Calendar findCalendarByName(String name) {
-        EntityManager entityManager = factory.createEntityManager();
         Query query = (Query) entityManager.createQuery("from Calendar c where c.name = :name");
         query.setParameter("name", name);
         return (Calendar) query.getSingleResult();
@@ -26,7 +24,6 @@ public class CalendarDAO extends HibernateGenericDAO<Calendar> {
     public List<Calendar> findCalendarsByUser(User user) {
         List<Calendar> calendars = new ArrayList<>();
         
-        EntityManager entityManager = factory.createEntityManager();
         Query queryOwner = (Query) entityManager.createQuery("from Calendar c where c.owner = :owner");
         Query queryParticipant = (Query) entityManager.createQuery("select c from Calendar c, Permission p where c.id = p.id.calendar.id and p.id.user = :user");
         

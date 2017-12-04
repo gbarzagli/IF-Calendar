@@ -1,9 +1,11 @@
 package dao;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import model.Calendar;
@@ -16,7 +18,6 @@ public class EventDAO extends HibernateGenericDAO<Event> {
     }
     
     public Event findEventByName(String name) {
-        EntityManager entityManager = factory.createEntityManager();
         Query query = (Query) entityManager.createQuery("from Event e where e.name = :name");
         query.setParameter("name", name);
         return (Event) query.getSingleResult();
@@ -24,17 +25,30 @@ public class EventDAO extends HibernateGenericDAO<Event> {
     
     @SuppressWarnings("unchecked")
     public List<Event> findEventsByCalendar(Calendar calendar) {
-        EntityManager entityManager = factory.createEntityManager();
         Query query = (Query) entityManager.createQuery("from Event e where e.calendar = :calendar");
         query.setParameter("calendar", calendar);
         return (List<Event>) query.getResultList();
     }
     
+    @SuppressWarnings("unchecked")
     public List<Event> findEventsByCalendarAndDate(Calendar calendar, Date date) {
-        EntityManager entityManager = factory.createEntityManager();
+        List<Event> events = new ArrayList<>();
         Query query = (Query) entityManager.createQuery("from Event e where e.calendar = :calendar");
         query.setParameter("calendar", calendar);
-        return (List<Event>) query.getResultList();
+        
+        LocalDateTime dateTime = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+        
+        List<Event> list = (List<Event>) query.getResultList();
+        for (Event event : list) {
+            LocalDateTime start = LocalDateTime.ofInstant(event.getStart().toInstant(), ZoneId.systemDefault());
+            if (dateTime.getDayOfMonth() == start.getDayOfMonth() 
+                    && dateTime.getMonth().getValue() == start.getMonth().getValue() 
+                    && dateTime.getYear() == start.getYear()) {
+                events.add(event);
+            }
+        }
+        
+        return events;
     }
     
 }

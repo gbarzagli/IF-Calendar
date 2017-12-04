@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<form action="">
 <div class="col-md-7 calendar-div">
     <div class="calendar-header">
         <a href="<c:url value="/calendar/changeMonth/-1"/>" class="col-md-4 col-xs-4 col-sm-4">
@@ -29,9 +30,16 @@
                         <c:forEach begin="0" end="6" var="column">
                             <td>
                                 <c:if test="${ calendar[line][column] ne '' }">
-                                    <div onclick="">
-                                        ${ calendar[line][column] }
-                                    </div>
+                                    <c:if test="${ calendar[line][column] eq selectedDay }">
+	                                    <div onclick="chooseDay(this)" class="selected-day">
+	                                        ${ calendar[line][column] }
+	                                    </div>
+	                                </c:if>
+	                                <c:if test="${ calendar[line][column] ne selectedDay }">
+	                                   <div onclick="chooseDay(this)">
+                                            ${ calendar[line][column] }
+                                       </div>
+	                                </c:if>
                                 </c:if>
                             </td>
                         </c:forEach>
@@ -41,3 +49,4 @@
         </table>
     </div>
 </div>
+</form>

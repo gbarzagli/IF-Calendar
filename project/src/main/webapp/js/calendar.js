@@ -21,3 +21,13 @@ function changePermissions(){
 function addUser(){
 	document.forms[0].action = "/if-calendar/calendar/saveParticipant";
 }
+
+function chooseDay(obj) {
+	var day = obj.innerHTML.trim();
+	document.forms[0].action = "/if-calendar/calendar/chooseDay/" + day;
+	document.forms[0].submit();
+}
+
+function insertEvent() {
+	window.location.href = "http://localhost:8080/if-calendar/event/create";
+}

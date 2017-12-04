@@ -1,8 +1,11 @@
 package controller;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.inject.Inject;
 
@@ -20,6 +23,7 @@ import model.Event;
 import model.Permission;
 import model.PermissionId;
 import model.User;
+import utils.Utils;
 
 @Controller
 @Path("/calendar")
@@ -72,13 +76,16 @@ public class CalendarController {
 		
 		User user = userDAO.findByKey(userSession.getUser().getId());		
 		calendar = calendarDAO.findByKey(calendar.getId());
+		userSession.setCalendar(calendar);
 		
 		int day = userSession.getDay();
 		int month = userSession.getMonth();
 		int year = userSession.getYear();
 		
-		List<Event> eventList = eventDAO.findEventsByCalendar(calendar);
-		userSession.setCalendar(calendar);
+		LocalDate localDate = LocalDate.of(year, month, day);
+		Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		
+		List<Event> eventList = eventDAO.findEventsByCalendarAndDate(calendar, date);
 		boolean canWrite = calendar.getOwner().equals(user);
 		
 		if (!canWrite) {
@@ -90,9 +97,18 @@ public class CalendarController {
 				}
 			}
 		}
+		
+        ResourceBundle monthBundle = ResourceBundle.getBundle("month");
+        String monthName = monthBundle.getString(Integer.toString(month));
+
+        String[][] monthDays = Utils.getMonthDays(month, year);
+		
 		result.include("canWrite", canWrite);
-		result.include("calendar", calendar);
+		result.include("month", monthName);
+		result.include("calendar", monthDays);
 		result.include("eventList", eventList);
+		result.include("selectedDay", day);
+		result.include("showEvents", true);
 	}
 
 	@Path("/participants")
@@ -143,6 +159,7 @@ public class CalendarController {
         
         int newYear = currentYear;
         int newMonth = currentMonth + month;
+        System.out.println("------------------   ANTES ERA = " + newMonth);
         
         if (newMonth < 1) {
             newMonth = 12;
@@ -151,12 +168,19 @@ public class CalendarController {
             newMonth = 1;
             newYear++;
         }
+        System.out.println("------------------   MUDOU PRA = " + newMonth);
         
         userSession.setMonth(newMonth);
         userSession.setYear(newYear);
         
         result.redirectTo(CalendarController.class).view(userSession.getCalendar());
     }
+	
+	@Path("/chooseDay/{day}")
+	public void chooseDay(int day) {
+	    userSession.setDay(day);
+	    result.redirectTo(CalendarController.class).view(userSession.getCalendar());
+	}
 
 	@Path("changePermission")
 	public void changePermission() {
