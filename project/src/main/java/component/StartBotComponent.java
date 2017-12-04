@@ -8,10 +8,10 @@ import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
-@ApplicationScoped
+//@ApplicationScoped
 public class StartBotComponent {
 	
-	public void init(@Observes ServletContext context) {
+	public void init() {
 		System.out.println("[TelegramBot] Starting IFCalendar Telegram Bot...!");
 		ApiContextInitializer.init();
 		

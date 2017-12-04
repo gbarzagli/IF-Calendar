@@ -27,6 +27,10 @@ public class Permission {
     public boolean canWrite() {
         return canWrite;
     }
+    
+    public boolean getCanWrite() {
+        return canWrite;
+    }
 
     public void setCanWrite(boolean write) {
         this.canWrite = write;

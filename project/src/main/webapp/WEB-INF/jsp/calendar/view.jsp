@@ -14,6 +14,13 @@
 	</head>
 	
 	<body>
+		<div class="header-main-calendar">
+			<form action="participants">
+				<button onclick="" class="col-md-6 col-sm-12 col-xs-12 pull-right btn-p">
+				   Manage participants
+				</button>
+			</form>
+		</div>
 	    <div class="container calendar-container">
 	        <div class="row calendar-row">
 	            <%@ include file="calendar_days.jsp" %>

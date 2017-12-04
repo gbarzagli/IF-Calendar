@@ -15,14 +15,19 @@
 	        <h2>${calendar.name }</h2>	
 	         <div class="input-div">
 		         <ul>		          
-		            <c:forEach items="${userList}" var="user">
+		            <c:forEach items="${permissionList}" var="permission">
 			            <li>
-			              <span>${user.name} ------ </span> 
-			              <input type="checkbox" id="${user.id}" name="${user.id}">
+			              <span>${permission.id.user.name} ------ </span>
+			              <c:if test="${permission.canWrite}">
+			              	 <input type="checkbox" class="check" checked id="${permission.id.user.id}" name="${permission.id.user.id}">
+			              </c:if>
+			               <c:if test="${!permission.canWrite}">
+			              	 <input type="checkbox" class="check" id="${permission.id.user.id}" name="${permission.id.user.id}">
+			              </c:if>
 			             </li> 
 		            </c:forEach>
 		        </ul>		        
-		        <button onClick="">Change permissions</button>
+		        <button onClick="changePermissions()">Change permissions</button>
 	        </div>
 	         <div class="input-div">
 		        <input type="email" name="email" id="email"/>
