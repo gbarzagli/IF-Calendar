@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
-    <script src="<c:url value="/js/jquery-3.2.1.min.js"/>"></script>
-    <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,100,‌​100italic,300,300ita‌​lic,400italic,500,50‌​0italic,700,700itali‌​c,900italic,900" rel="stylesheet" type="text/css">
     <title>IFCalendar - Login</title>
   </head>
   <body class="login-body">
@@ -32,5 +31,7 @@
 	      </div>
 	    </div>
     </form>
+    <script src="<c:url value="/js/jquery-3.2.1.min.js"/>"></script>
+    <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
   </body>
 </html>

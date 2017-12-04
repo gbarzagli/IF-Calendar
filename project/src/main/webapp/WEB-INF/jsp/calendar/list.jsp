@@ -59,20 +59,7 @@
         </div>
       </div>
       </form>
-      
       <script src="<c:url value="/js/jquery-3.2.1.min.js"/>"></script>
       <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
-
-<!-- 	<div class="container"> -->
-<!-- 		<div class="main-container row"> -->
-<!-- 			<h2>CALENDARS</h2> -->
-<!-- 			<ul> -->
-<%-- 				<li><c:forEach items="${calendarList}" var="calendar"> --%>
-<%-- 						<a href="<c:url value="/calendar/${calendar.id}"/>">${calendar.name}</a> --%>
-<!-- 						<br> -->
-<%-- 					</c:forEach></li> --%>
-<!-- 			</ul> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
 </body>
 </html>

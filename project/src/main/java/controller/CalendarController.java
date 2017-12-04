@@ -46,11 +46,6 @@ public class CalendarController {
 
 	@Path("/insert")
 	public void insert(String name) {
-	    if (name == null || name.trim().isEmpty()) {
-	        result.include("message", "You can not create a calendar without name!");
-	        result.redirectTo(CalendarController.class).list();
-	    }
-	    
 		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
 		Calendar calendar = new Calendar();
 		calendar.setName(name);
@@ -155,6 +150,9 @@ public class CalendarController {
 			permission.setId(permissionId);
 			permission.setCanWrite(false);
 			List<Permission> permissionList = calendar.getPermissions();
+			if (permissionList == null) {
+			    permissionList = new ArrayList<>();
+			}
 			permissionList.add(permission);
 			calendar.setPermissions(permissionList);
 			calendarDAO.update(calendar);

@@ -13,6 +13,10 @@ import factory.constants.DAOConstants;
  * @author Gabriel Barzagli
  */
 public class DAOFactory {
+    
+    private static UserDAO USERDAO;
+    private static CalendarDAO CALENDARDAO;
+    private static EventDAO EVENTDAO;
 
     private DAOFactory () {
     }
@@ -21,11 +25,20 @@ public class DAOFactory {
     public static GenericDAO getDAO(String type) {
         switch (type) {
             case DAOConstants.USER_CLASS:
-            	return new UserDAO();
+                if (USERDAO == null) {
+                    USERDAO = new UserDAO();
+                }
+            	return USERDAO;
             case DAOConstants.CALENDAR_CLASS:
-                return new CalendarDAO();
+                if (CALENDARDAO == null) {
+                    CALENDARDAO = new CalendarDAO();
+                }
+                return CALENDARDAO;
             case DAOConstants.EVENT_CLASS:
-                return new EventDAO();
+                if (EVENTDAO == null) {
+                    EVENTDAO = new EventDAO();
+                }
+                return EVENTDAO;
             default:
                 return null;
         }

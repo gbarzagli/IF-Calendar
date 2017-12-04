@@ -37,6 +37,10 @@ public class EventController {
         if (!userSession.isLogged()) {
             result.redirectTo(HomeController.class).index();
         }
+        
+        result.include("userName", userSession.getUser().getName());
+        result.include("calendar", userSession.getCalendar());
+        result.include("calendarName", userSession.getCalendar().getName());
     }
 
     @Path("/insert")
@@ -98,6 +102,9 @@ public class EventController {
         result.include("startTime", startTime.toString());
         result.include("endTime", endTime.toString());
         result.include("event", event);
+        result.include("userName", userSession.getUser().getName());
+        result.include("calendar", userSession.getCalendar());
+        result.include("calendarName", userSession.getCalendar().getName());
     }
 
     @Path("/edit/{event.id}/update")
@@ -154,7 +161,6 @@ public class EventController {
                 email.send(user.getEmail(), subject, message);                                  
             }
         }
-        
         
         eventDAO.remove(event.getId());
         result.redirectTo(CalendarController.class).view(userSession.getCalendar());
