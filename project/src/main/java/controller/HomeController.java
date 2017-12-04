@@ -26,7 +26,7 @@ public class HomeController {
     /**
      * Method responsible to the first page of this app.
      */
-    @Path("/")
+    @Path("")
     public void index() {
         if (userSession.getEmail() == null) {
             userSession.setEmail(new utils.Email());

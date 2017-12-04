@@ -47,6 +47,10 @@ public class CalendarController {
 
 	@Path("/insert")
 	public void insert(String name) {
+	    if (!userSession.isLogged()) {
+            result.redirectTo(HomeController.class).index();
+        }
+	    
 		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
 		Calendar calendar = new Calendar();
 		calendar.setName(name);
@@ -59,6 +63,10 @@ public class CalendarController {
 
 	@Path("/list")
 	public void list() {
+	    if (!userSession.isLogged()) {
+            result.redirectTo(HomeController.class).index();
+        }
+	    
 		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
 		List<Calendar> myCalendars = calendarDAO.findCalendarsByUser(userSession.getUser());
 		List<Permission> permissionList = userSession.getUser().getPermissions();
@@ -77,6 +85,10 @@ public class CalendarController {
 
 	@Path("/{calendar.id}")
 	public void view(Calendar calendar) {
+	    if (!userSession.isLogged()) {
+            result.redirectTo(HomeController.class).index();
+        }
+	    
 		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
 		UserDAO userDAO = (UserDAO) DAOFactory.getDAO(DAOConstants.USER_CLASS);
 		EventDAO eventDAO = (EventDAO) DAOFactory.getDAO(DAOConstants.EVENT_CLASS);
@@ -126,6 +138,10 @@ public class CalendarController {
 
 	@Path("/participants")
 	public void participants() {
+	    if (!userSession.isLogged()) {
+            result.redirectTo(HomeController.class).index();
+        }
+	    
 		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
 		Calendar calendar = calendarDAO.findByKey(userSession.getCalendar().getId());
 		List<Permission> permissionList = calendar.getPermissions();
@@ -139,6 +155,10 @@ public class CalendarController {
 
 	@Path("/saveParticipant")
 	public void saveParticipant(String email) {
+	    if (!userSession.isLogged()) {
+            result.redirectTo(HomeController.class).index();
+        }
+	    
 		UserDAO userDAO = (UserDAO) DAOFactory.getDAO(DAOConstants.USER_CLASS);
 		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
 		Calendar calendar = calendarDAO.findByKey(userSession.getCalendar().getId());
@@ -166,6 +186,10 @@ public class CalendarController {
 	
 	@Path("/changeMonth/{month}")
     public void changeMonth(int month) {
+	    if (!userSession.isLogged()) {
+            result.redirectTo(HomeController.class).index();
+        }
+	    
         int currentMonth = userSession.getMonth();
         int currentYear = userSession.getYear();
         
@@ -188,6 +212,10 @@ public class CalendarController {
 	
 	@Path("/chooseDay/{day}")
 	public void chooseDay(int day) {
+	    if (!userSession.isLogged()) {
+            result.redirectTo(HomeController.class).index();
+        }
+	    
 	    userSession.setDay(day);
 	    result.redirectTo(CalendarController.class).view(userSession.getCalendar());
 	}
@@ -195,6 +223,10 @@ public class CalendarController {
 	@Path("/changePermission/{values}")
 	@Post
 	public void changePermission(String values) {
+	    if (!userSession.isLogged()) {
+            result.redirectTo(HomeController.class).index();
+        }
+	    
 		String[] listValues = values.split(",");
 		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
 		Calendar calendar = calendarDAO.findByKey(userSession.getCalendar().getId());
