@@ -32,16 +32,23 @@
                     <tr>
                         <c:forEach begin="0" end="6" var="column">
                             <td>
-                                <c:if test="${ monthDays[line][column] ne '' }">
-                                    <c:if test="${ monthDays[line][column] eq selectedDay }">
+                                <c:if test="${ not empty monthDays[line][column].day }">
+                                    <c:if test="${ monthDays[line][column].day eq selectedDay }">
 	                                    <div onclick="chooseDay(this)" class="selected-day">
-	                                        ${ monthDays[line][column] }
+	                                        ${ monthDays[line][column].day }
 	                                    </div>
 	                                </c:if>
-	                                <c:if test="${ monthDays[line][column] ne selectedDay }">
-	                                   <div onclick="chooseDay(this)">
-                                            ${ monthDays[line][column] }
-                                       </div>
+	                                <c:if test="${ monthDays[line][column].day ne selectedDay }">
+	                                   <c:if test="${ monthDays[line][column].hasEvent }">
+		                                   <div onclick="chooseDay(this)">
+	                                            <a>${ monthDays[line][column].day }</a>
+	                                       </div>
+                                       </c:if>
+                                       <c:if test="${ !monthDays[line][column].hasEvent }">
+		                                   <div onclick="chooseDay(this)">
+	                                            ${ monthDays[line][column].day }
+	                                       </div>
+                                       </c:if>
 	                                </c:if>
                                 </c:if>
                             </td>

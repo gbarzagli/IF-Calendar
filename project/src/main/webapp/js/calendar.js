@@ -34,6 +34,8 @@ function addUser(){
 
 function chooseDay(obj) {
 	var day = obj.innerHTML.trim();
+	day = day.replace("<a>", "");
+	day = day.replace("</a>", "");
 	document.forms[0].action = "/if-calendar/calendar/chooseDay/" + day;
 	document.forms[0].submit();
 }

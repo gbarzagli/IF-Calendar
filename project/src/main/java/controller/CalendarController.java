@@ -21,6 +21,7 @@ import factory.DAOFactory;
 import factory.constants.DAOConstants;
 import model.Calendar;
 import model.Event;
+import model.MonthDays;
 import model.Permission;
 import model.PermissionId;
 import model.User;
@@ -108,7 +109,7 @@ public class CalendarController {
         ResourceBundle monthBundle = ResourceBundle.getBundle("month");
         String monthName = monthBundle.getString(Integer.toString(month));
 
-        String[][] monthDays = Utils.getMonthDays(month, year);
+        MonthDays[][] monthDays = Utils.getMonthDays(calendar, month, year);
 		
 		result.include("canWrite", canWrite);
 		result.include("isOwner", isOwner);
