@@ -57,7 +57,7 @@ public class SignUpController {
                 result.redirectTo(SignUpController.class).signup();
             }
         } else {
-            result.include("validation", "Complete all fields!");
+            result.include("validation", "Fill all fields!");
             result.redirectTo(SignUpController.class).signup();
         }
     }

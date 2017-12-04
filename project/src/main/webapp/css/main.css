@@ -456,6 +456,10 @@ nav{
   color: #d7d7d7 !important;
 }
 
+.table-calendar > tbody > tr > td > div > a {
+	font-weight: bolder !important;
+}
+
 .table-calendar > tbody > tr > td > div:hover > a {
 	color: #fff !important;
 	font-size: 700;

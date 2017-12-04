@@ -33,6 +33,10 @@ function verifyCalendarName() {
 	}
 }
 
+function redirectToRegister() {
+	window.location.href = "http://localhost:8080/if-calendar/signup";
+}
+
 function checkPermission(id) {
 	var checkbox = document.getElementById(id);
 	checkbox.checked = !checkbox.checked;
@@ -57,3 +61,4 @@ function insertEvent() {
 function cancelSignup() {
 	window.location.href = "http://localhost:8080/if-calendar/";
 }
+

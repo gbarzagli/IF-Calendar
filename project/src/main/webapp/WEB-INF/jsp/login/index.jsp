@@ -12,7 +12,7 @@
     <title>IFCalendar - Login</title>
   </head>
   <body class="login-body">
-  	<form method="post" action="<c:url value='/login/login'/>">
+  	<form method="post" action="<c:url value='/auth'/>">
 	    <div class="login-page-bg">
 	      <div class="container">
 	        <div class="row">
@@ -23,9 +23,10 @@
 	            <label for="user.password">PASSWORD</label>
 	            <input type="password" name="user.password" id="password"/>
 	            <div id="divButtonsLogin" class="divButtonsLogin">
-		            <button class="button-primary" name="login" value="login">LOGIN</button>
-					<button class="button-primary" name="signup" value="signup">SIGNUP</button>
+		            <button class="button-primary" name="login">LOGIN</button>
+					<button type="button" class="button-primary" name="signup" onclick="redirectToRegister()">SIGNUP</button>
 	            </div>
+	            <span class="login-error"><c:if test="${not empty validation}"><c:out value="${validation}"></c:out></c:if></span>
 	          </div>
 	        </div>
 	      </div>
@@ -33,5 +34,6 @@
     </form>
     <script src="<c:url value="/js/jquery-3.2.1.min.js"/>"></script>
     <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+    <script src="<c:url value="/js/calendar.js"/>"></script>
   </body>
 </html>

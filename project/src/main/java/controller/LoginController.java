@@ -38,35 +38,34 @@ public class LoginController {
         result.redirectTo(HomeController.class).index();
     }
 
-    @Path("/login/login")
-    public void login(User user, String signup, String login) {
-        if (login != null) {
-            if (user != null && !user.getEmail().trim().isEmpty() && !user.getPassword().trim().isEmpty()) {                
-            	UserDAO userDAO = new UserDAO();                
-                User userLogged = userDAO.findUserByEmail(user.getEmail());                
-                if (userLogged != null && userLogged.getPassword().equals(encrypt(user.getPassword()))) {
-                    userSession.login(userLogged);
-                    
-                    LocalDate localDate = LocalDate.now();
-                    Month month = localDate.getMonth();
-                    
-                    int day = localDate.getDayOfMonth();
-                    int monthInt = month.getValue();
-                    int year = localDate.getYear();
+    @Path("/auth")
+    public void login(User user) {
+        if (user != null && (user.getEmail() != null && !user.getEmail().trim().isEmpty()) && (user.getPassword() != null && !user.getPassword().trim().isEmpty())) {
+        	UserDAO userDAO = new UserDAO();                
+            User userLogged = userDAO.findUserByEmail(user.getEmail());                
+            if (userLogged != null && userLogged.getPassword().equals(encrypt(user.getPassword()))) {
+                userSession.login(userLogged);
+                
+                LocalDate localDate = LocalDate.now();
+                Month month = localDate.getMonth();
+                
+                int day = localDate.getDayOfMonth();
+                int monthInt = month.getValue();
+                int year = localDate.getYear();
 
-                    userSession.setDay(day);
-                    userSession.setMonth(monthInt);
-                    userSession.setYear(year);
-                    
-                    result.include("userName", userLogged.getName());
-                    result.redirectTo(CalendarController.class).list();
-                } else {
-                    result.include("validation", "Wrong login or password");
-                    result.redirectTo(LoginController.class).index();
-                }
+                userSession.setDay(day);
+                userSession.setMonth(monthInt);
+                userSession.setYear(year);
+                
+                result.include("userName", userLogged.getName());
+                result.redirectTo(CalendarController.class).list();
+            } else {
+                result.include("validation", "Wrong login or password");
+                result.redirectTo(LoginController.class).index();
             }
-        } else if (signup != null) {
-            result.redirectTo(SignUpController.class).signup();
+        } else {
+            result.include("validation", "Fill all fields!");
+            result.redirectTo(LoginController.class).index();
         }
     }
 }
