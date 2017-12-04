@@ -10,17 +10,18 @@ function edit(id) {
 	document.forms[0].action = "/if-calendar/event/edit/" + id;
 }
 
-function manageParticipants(){
+function manageParticipants() {
 	document.forms[0].action = "/if-calendar/calendar/participants";
 }
 
-function changePermissions(){
+function changePermissions() {
 	var elements = document.getElementsByClassName("check");
 	var values = "";
-	[].forEach.call(elements, function (element) {
+	[].forEach.call(elements, function(element) {
 		values += element.id + "," + element.checked + ",";
 	});
-	document.forms[0].action = "/if-calendar/calendar/changePermission/" + values;
+	document.forms[0].action = "/if-calendar/calendar/changePermission/"
+			+ values;
 }
 
 function verifyCalendarName() {
@@ -37,7 +38,7 @@ function checkPermission(id) {
 	checkbox.checked = !checkbox.checked;
 }
 
-function addUser(){
+function addUser() {
 	document.forms[0].action = "/if-calendar/calendar/saveParticipant";
 }
 
