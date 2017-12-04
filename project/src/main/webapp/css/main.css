@@ -17,6 +17,11 @@ body{
 	color: #111111;
 }
 
+.divButtonsLogin{
+	display: flex;
+	justify-content: space-around;
+}
+
 .login-body{
   background-size: cover;
   background-image: url(/if-calendar/imgs/background.png);
@@ -126,7 +131,7 @@ select > option{
 }
 
 .button-primary{
-  left:calc(50% - 40px);
+/*   left:calc(50% - 40px); */
   padding: 10px 20px;
   background-color: #fff;
   color: #111111;

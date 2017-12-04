@@ -23,6 +23,15 @@ function changePermissions(){
 	document.forms[0].action = "/if-calendar/calendar/changePermission/" + values;
 }
 
+function verifyCalendarName() {
+	var field = document.getElementById("calendarName");
+	if (field.value == null || field.value.trim() == "") {
+		alert("Type a name for your calendar!");
+	} else {
+		document.forms[0].submit();
+	}
+}
+
 function checkPermission(id) {
 	var checkbox = document.getElementById(id);
 	checkbox.checked = !checkbox.checked;
@@ -42,4 +51,8 @@ function chooseDay(obj) {
 
 function insertEvent() {
 	window.location.href = "http://localhost:8080/if-calendar/event/create";
+}
+
+function cancelSignup() {
+	window.location.href = "http://localhost:8080/if-calendar/";
 }

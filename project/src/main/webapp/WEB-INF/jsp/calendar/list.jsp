@@ -52,14 +52,15 @@
               <h4 class="modal-title">CREATE CALENDAR</h4>
             </div>
             <div class="modal-body">
-              <input type="text" name="name" class="calendar-name" placeholder="Calendar name" />
+              <input id="calendarName" type="text" name="name" class="calendar-name" placeholder="Calendar name" />
             </div>
-            <button type="submit" class="modal-button conclude">CONCLUIR</button>
+            <button type="button" class="modal-button conclude" onclick="verifyCalendarName()">CONCLUIR</button>
           </div>
         </div>
       </div>
       </form>
       <script src="<c:url value="/js/jquery-3.2.1.min.js"/>"></script>
       <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+      <script src="<c:url value="/js/calendar.js"/>"></script>
 </body>
 </html>

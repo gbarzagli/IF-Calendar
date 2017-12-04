@@ -24,7 +24,10 @@
 	            <input type="email" name="user.email" id="username"/>
 	            <label for="password">PASSWORD</label>
 	            <input type="password" name="user.password" id="password"/>
-		        <button class="button-primary" id="buttonConfirmSigup">CONFIRM</button>
+	            <div id="divButtonsLogin" class="divButtonsLogin">
+			        <button class="button-primary" id="buttonConfirmSigup">CONFIRM</button>
+			        <button type="button" class="button-primary" id="buttonCancel" onclick="cancelSignup()">CANCEL</button>
+		        </div>
 		        <span class="signup-error"><c:if test="${not empty validation}">
 		        <c:out value="${validation}"></c:out></c:if></span>
 	          </div>
@@ -34,5 +37,6 @@
     </form>
     <script src="<c:url value="/js/jquery-3.2.1.min.js"/>"></script>
     <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+    <script src="<c:url value="/js/main.js"/>"></script>
   </body>
 </html>

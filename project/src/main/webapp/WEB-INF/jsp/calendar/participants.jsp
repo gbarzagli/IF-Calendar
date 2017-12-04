@@ -41,7 +41,7 @@
                     </c:forEach>
                 </ul>
                 <div class="add-participant-div col-md-12">
-                    <input class="col-md-8 col-xs-8 col-sm-8" placeholder="Type user's e-mail" name="email" type="text" />
+                    <input class="col-md-8 col-xs-8 col-sm-8" placeholder="Type user's e-mail" name="email" type="email" />
                     <button class="col-md-4 col-xs-4 col-sm-4 pull-right" onClick="addUser()">ADD USER</button>
                 </div>
             </div>

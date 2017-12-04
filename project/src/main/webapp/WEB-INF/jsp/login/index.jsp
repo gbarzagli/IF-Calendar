@@ -22,7 +22,7 @@
 	            <input type="email" name="user.email" placeholder="example@example.com" id="username"/>
 	            <label for="user.password">PASSWORD</label>
 	            <input type="password" name="user.password" id="password"/>
-	            <div id="divButtonsLogin">
+	            <div id="divButtonsLogin" class="divButtonsLogin">
 		            <button class="button-primary" name="login" value="login">LOGIN</button>
 					<button class="button-primary" name="signup" value="signup">SIGNUP</button>
 	            </div>
