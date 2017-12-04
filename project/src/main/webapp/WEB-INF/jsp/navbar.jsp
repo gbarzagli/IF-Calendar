@@ -16,12 +16,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <c:if test="${ not empty calendarName }">
-	        <li class="active"><a>${ calendarName }</a></li>
+	        <li class="active"><a href="<c:url value="/calendar/${ calendar.id }" />">${ calendarName }</a></li>
 	        <li><a href="<c:url value="/calendar/list" />">MANAGE CALENDARS</a></li>
         </c:if>
         <c:if test="${ empty calendarName }">
             <li class="active"><a href="<c:url value="/calendar/list" />">MANAGE CALENDARS</a></li>
         </c:if>
+        <li class="pull-right"><a>Logged as: ${ userName }</a></li>
       </ul>
       <a class="pull-right logout" href="<c:url value="/logout" />">LOGOUT</a>
     </div>

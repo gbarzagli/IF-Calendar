@@ -40,6 +40,8 @@ public class CalendarController {
 		if (!userSession.isLogged()) {
 			result.redirectTo(HomeController.class).index();
 		}
+		
+		result.include("userName", userSession.getUser().getName());
 	}
 
 	@Path("/insert")
@@ -72,6 +74,7 @@ public class CalendarController {
 			}
 		}
 
+		result.include("userName", userSession.getUser().getName());
 		result.include("myCalendars", myCalendars);
 		result.include("otherCalendars", otherCalendars);
 	}
@@ -114,8 +117,10 @@ public class CalendarController {
 		result.include("canWrite", canWrite);
 		result.include("month", monthName);
 		result.include("year", year);
+		result.include("calendar", calendar);
 		result.include("calendarName", calendar.getName());
-		result.include("calendar", monthDays);
+		result.include("userName", userSession.getUser().getName());
+		result.include("monthDays", monthDays);
 		result.include("eventList", eventList);
 		result.include("selectedDay", day);
 		result.include("showEvents", true);
@@ -128,6 +133,8 @@ public class CalendarController {
 		List<Permission> permissionList = calendar.getPermissions();
 		
 
+		result.include("userName", userSession.getUser().getName());
+		result.include("calendarName", calendar.getName());
 		result.include("calendar", calendar);
 		result.include("permissionList", permissionList);
 	}
@@ -152,7 +159,6 @@ public class CalendarController {
 			calendar.setPermissions(permissionList);
 			calendarDAO.update(calendar);
 		}
-		// TODO create a else block to inform user that the email is not valid
 
 		result.redirectTo(CalendarController.class).participants();
 	}

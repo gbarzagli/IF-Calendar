@@ -58,6 +58,7 @@ public class LoginController {
                     userSession.setMonth(monthInt);
                     userSession.setYear(year);
                     
+                    result.include("userName", userLogged.getName());
                     result.redirectTo(CalendarController.class).list();
                 } else {
                     result.include("validation", "Wrong login or password");

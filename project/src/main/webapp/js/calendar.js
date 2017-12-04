@@ -23,6 +23,11 @@ function changePermissions(){
 	document.forms[0].action = "/if-calendar/calendar/changePermission/" + values;
 }
 
+function checkPermission(id) {
+	var checkbox = document.getElementById(id);
+	checkbox.checked = !checkbox.checked;
+}
+
 function addUser(){
 	document.forms[0].action = "/if-calendar/calendar/saveParticipant";
 }

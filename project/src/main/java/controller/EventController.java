@@ -3,6 +3,7 @@ package controller;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -139,18 +140,21 @@ public class EventController {
         EventDAO eventDAO = (EventDAO) DAOFactory.getDAO(DAOConstants.EVENT_CLASS);
         event = eventDAO.findByKey(event.getId());
         
-        Email email = new Email();
-        String owner = event.getCalendar().getOwner().getEmail();
-        String subject = "Event canceled!";
-        String message = "The event " + event.getName() + " was canceled... :(";
-        
-        email.send(owner, subject, message);
-        List<Permission> permissionList = event.getCalendar().getPermissions();
-        for (Permission permission : permissionList) {
-            PermissionId permissionId = permission.getId();
-            User user = permissionId.getUser();
-            email.send(user.getEmail(), subject, message);                                  
+        if (event.getStart().after(new Date())) {
+            Email email = new Email();
+            String owner = event.getCalendar().getOwner().getEmail();
+            String subject = "Event canceled!";
+            String message = "The event " + event.getName() + " was canceled... :(";
+            
+            email.send(owner, subject, message);
+            List<Permission> permissionList = event.getCalendar().getPermissions();
+            for (Permission permission : permissionList) {
+                PermissionId permissionId = permission.getId();
+                User user = permissionId.getUser();
+                email.send(user.getEmail(), subject, message);                                  
+            }
         }
+        
         
         eventDAO.remove(event.getId());
         result.redirectTo(CalendarController.class).view(userSession.getCalendar());

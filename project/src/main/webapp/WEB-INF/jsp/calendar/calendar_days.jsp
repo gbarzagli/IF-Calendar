@@ -32,15 +32,15 @@
                     <tr>
                         <c:forEach begin="0" end="6" var="column">
                             <td>
-                                <c:if test="${ calendar[line][column] ne '' }">
-                                    <c:if test="${ calendar[line][column] eq selectedDay }">
+                                <c:if test="${ monthDays[line][column] ne '' }">
+                                    <c:if test="${ monthDays[line][column] eq selectedDay }">
 	                                    <div onclick="chooseDay(this)" class="selected-day">
-	                                        ${ calendar[line][column] }
+	                                        ${ monthDays[line][column] }
 	                                    </div>
 	                                </c:if>
-	                                <c:if test="${ calendar[line][column] ne selectedDay }">
+	                                <c:if test="${ monthDays[line][column] ne selectedDay }">
 	                                   <div onclick="chooseDay(this)">
-                                            ${ calendar[line][column] }
+                                            ${ monthDays[line][column] }
                                        </div>
 	                                </c:if>
                                 </c:if>

@@ -54,7 +54,7 @@ public class EventApiController {
 			event.setName(eventApi.getNameEvent());
 			event.setLocal(eventApi.getLocalEvent());
 			event.setCalendar(calendar);
-			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH");
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 			event.setStart(dateFormat.parse(eventApi.getStartEvent()));
 			event.setEnd(dateFormat.parse(eventApi.getEndEvent()));	
 			

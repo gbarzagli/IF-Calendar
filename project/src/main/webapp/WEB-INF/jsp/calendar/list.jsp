@@ -34,7 +34,7 @@
                 <ul class="calendars-list">
                     <c:forEach items="${ otherCalendars }" var="calendar">
                         <li>
-                            <a class="col-md-12" href="<c:url value="/calendar/${calendar.id}"/>">${calendar.name}</a>
+                            [${calendar.owner.name}] <a class="col-md-12" href="<c:url value="/calendar/${calendar.id}"/>">${calendar.name}</a>
                         </li>
                     </c:forEach>
                 </ul>

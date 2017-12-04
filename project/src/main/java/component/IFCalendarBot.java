@@ -64,13 +64,11 @@ public class IFCalendarBot extends TelegramLongPollingBot {
 
 	@Override
 	public String getBotUsername() {
-		// TODO
 		return "IFCalendarBot";
 	}
 
 	@Override
 	public String getBotToken() {
-		// TODO
 		return "416248213:AAFr51e1lX6fDb31xPu9fPtOL2lCi3p6vrY";
 	}
 }

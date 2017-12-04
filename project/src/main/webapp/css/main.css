@@ -8,12 +8,14 @@ body{
   background-color: #111111;
   overflow: hidden;
 }
-/*
-@media (min-width: 1200px){
-.container {
-    max-width: 60% !important;
-  }
-}*/
+
+.modal-dialog * {
+	color: #777777;
+}
+
+.modal-title {
+	color: #111111;
+}
 
 .login-body{
   background-size: cover;
