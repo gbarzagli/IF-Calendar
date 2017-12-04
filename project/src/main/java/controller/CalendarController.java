@@ -92,7 +92,8 @@ public class CalendarController {
 		Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		
 		List<Event> eventList = eventDAO.findEventsByCalendarAndDate(calendar, date);
-		boolean canWrite = calendar.getOwner().equals(user);
+		boolean isOwner = calendar.getOwner().equals(user);
+		boolean canWrite = isOwner;
 		
 		if (!canWrite) {
 			List<Permission> permissionList = calendar.getPermissions();
@@ -110,6 +111,7 @@ public class CalendarController {
         String[][] monthDays = Utils.getMonthDays(month, year);
 		
 		result.include("canWrite", canWrite);
+		result.include("isOwner", isOwner);
 		result.include("month", monthName);
 		result.include("year", year);
 		result.include("calendar", calendar);
