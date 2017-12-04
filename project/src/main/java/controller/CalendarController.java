@@ -2,7 +2,6 @@ package controller;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -11,6 +10,7 @@ import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import component.UserSession;
 import dao.CalendarDAO;
@@ -125,15 +125,10 @@ public class CalendarController {
 		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
 		Calendar calendar = calendarDAO.findByKey(userSession.getCalendar().getId());
 		List<Permission> permissionList = calendar.getPermissions();
-		List<User> userList = new ArrayList<User>();
-		for (Permission permission : permissionList) {
-			PermissionId permissionId = permission.getId();
-			User user = permissionId.getUser();
-			userList.add(user);
-		}
+		
 
 		result.include("calendar", calendar);
-		result.include("userList", userList);
+		result.include("permissionList", permissionList);
 	}
 
 	@Path("/saveParticipant")
@@ -189,8 +184,23 @@ public class CalendarController {
 	    result.redirectTo(CalendarController.class).view(userSession.getCalendar());
 	}
 
-	@Path("changePermission")
-	public void changePermission() {
-	    // TODO create change permission method
+	@Path("/changePermission/{values}")
+	@Post
+	public void changePermission(String values) {
+		String[] listValues = values.split(",");
+		CalendarDAO calendarDAO = (CalendarDAO) DAOFactory.getDAO(DAOConstants.CALENDAR_CLASS);
+		Calendar calendar = calendarDAO.findByKey(userSession.getCalendar().getId());
+		
+		for (Permission permission : calendar.getPermissions()) {
+			for(int i=0; i<listValues.length; i+=2){
+				if(permission.getId().getUser().getId() == Long.parseLong(listValues[i])){
+					permission.setCanWrite(Boolean.parseBoolean(listValues[i+1]));
+				}
+			}
+			
+		}
+		calendarDAO.update(calendar);
+		
+		result.redirectTo(CalendarController.class).participants();
 	}
 }
